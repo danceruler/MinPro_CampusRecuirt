@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+const Reg = require('../../utils/reg.js')
 Page({
   data: {
     motto: 'Hello World',
@@ -16,7 +16,7 @@ Page({
     })
   },
   onLoad: function () {
-
+    console.log(Reg)
   },
   getUserInfo: function(e) {
     console.log(e)
