@@ -28,13 +28,11 @@ App({
         }
       }
     })
-
-    
   },
   globalData: {
     userInfo: null,
-    testApiDomain:'http://localhost:60461/',
-    myApiDomain:'https://wxloginapi.820803.xyz/'
+    testApiDomain:'http://localhost:60461/api/',
+    myApiDomain:'https://wxloginapi.820803.xyz/api/'
   },
   myLogin: function () {
     var that = this
@@ -45,7 +43,7 @@ App({
         wx.login({
           success: function (res) {
             wx.request({
-              url: that.globalData.myApiDomain+'api/WxLogin?appid=wxeb64182a8c14a216&secret=987defe5cd1ef5e1b1728fab4e53c730&iv=' + iv + '&secretCode=' + encryptedData + '&code=' + res.code,
+              url: that.globalData.myApiDomain+'WxLogin?appid=wxeb64182a8c14a216&secret=987defe5cd1ef5e1b1728fab4e53c730&iv=' + iv + '&secretCode=' + encryptedData + '&code=' + res.code,
               method: 'post',
               dataType: "application/json",
               success: function (data) {
@@ -55,7 +53,7 @@ App({
                 }
               },
               fail:function(){
-                this.myLogin()
+                that.myLogin()
               }
             })
           }
