@@ -16,17 +16,17 @@ Component({
     selectedColor: "#3cc51f",
     list: [
       {
-        pagePath: "/pages/index/index",
+        pagePath: "/pages/worklist/index",
         iconPath: "/image/list.png",
         selectedIconPath: "/image/list_HL.png"
       },
       {
-        pagePath: "/pages/logs/logs",
+        pagePath: "/pages/workprogress/index",
         iconPath: "/image/app.png",
         selectedIconPath: "/image/app_HL.png"
       },
       {
-        pagePath: "/pages/usercenter/usercenter",
+        pagePath: "/pages/user/index",
         iconPath: "/image/user.png",
         selectedIconPath: "/image/user_HL.png"
       },
