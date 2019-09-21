@@ -8,6 +8,7 @@
     </block>
   </view>
   <view class="usermotto">
+    <button bindtap="goUserCenter">Test</button>
     <text class="user-motto">{{ motto }}</text>
   </view>
 </view>

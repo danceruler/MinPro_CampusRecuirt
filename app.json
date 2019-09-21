@@ -4,6 +4,30 @@
     "pages/logs/logs",
     "pages/usercenter/usercenter"
   ],
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "image/list.png",
+        "selectedIconPath": "image/list_HL.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "image/app.png",
+        "selectedIconPath": "image/app_HL.png"
+      },
+      {
+        "pagePath": "pages/usercenter/usercenter",
+        "iconPath": "image/user.png",
+        "selectedIconPath": "image/user_HL.png"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

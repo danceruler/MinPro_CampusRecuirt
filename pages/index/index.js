@@ -15,6 +15,19 @@ Page({
       url: '../logs/logs'
     })
   },
+  goUserCenter: function(){
+    wx.navigateTo({
+      url: '../usercenter/usercenter',
+    })
+  },
+  onShow: function() {
+    if (typeof this.getTabBar === 'function' &&
+      this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+  },
   onLoad: function () {
     console.log(Reg)
   },
