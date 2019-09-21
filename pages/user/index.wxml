@@ -1,4 +1,4 @@
 <!--pages/user/index.wxml-->
-<cover-view>
+<view class="user-content">
   <user-info />
-</cover-view>
+</view>

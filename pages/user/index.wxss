@@ -1,1 +1,5 @@
 /* pages/user/index.wxss */
+.user-content {
+  display: flex;
+  flex-direction: column;
+}

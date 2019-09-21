@@ -13,6 +13,9 @@ Component({
   data: {
     userName: '缪泽航',
     userAvaterPath: '/image/user.png',
+    schoolIconPath: '/image/school.png',
+    positionIconPath: '/image/position.png',
+    editIconPath: '/image/edit.png'
   },
 
   /**
