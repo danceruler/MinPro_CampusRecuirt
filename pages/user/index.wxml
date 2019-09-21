@@ -1,2 +1,4 @@
 <!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<cover-view>
+  <user-info />
+</cover-view>
