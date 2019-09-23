@@ -15,7 +15,6 @@ App({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
-          console.log('auth')
           that.globalData.isLogin = 1
         } else {
           //没有获取授权的事件
@@ -44,7 +43,7 @@ App({
               success: function (data) {
                 console.log(JSON.parse(data.data))
                 if(JSON.parse(data.data).State == 0){
-                  that.myLogin()
+                  that.myLogin(obj)
                 }else{
                   that.globalData.isLogin = 1
                   that.globalData.userInfo = JSON.parse(data.data).user
@@ -54,7 +53,7 @@ App({
                 }
               },
               fail:function(){
-                that.myLogin()
+                that.myLogin(obj)
               }
             })
           }

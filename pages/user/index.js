@@ -5,7 +5,7 @@ Page({
   onLoad:function(){
   },
   onShow: function () {
-    if (app.globalData.isLogin == 1){
+    if (app.globalData.isLogin == 0 || app.globalData.userInfo==null){
       app.myLogin(this)
     }
     console.log(this.data)

@@ -1,2 +1,8 @@
 <!--pages/worklist/index.wxml-->
-<text>pages/worklist/index.wxml</text>
+<view>
+<input placeholder='adsa'></input>
+<view wx:for="{{list}}" wx:key="unique">
+   <text> {{item.jobName}}</text>
+</view>
+</view>
+
