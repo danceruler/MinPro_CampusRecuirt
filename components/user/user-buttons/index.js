@@ -11,7 +11,26 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    list: [
+      {
+        name: '我的收藏',
+        iconPath: '/image/user.png',
+        riconPath: '/image/right_arrow.png',
+        info: '您收藏的都在这'
+      },
+      {
+        name: '我的发布',
+        iconPath: '/image/user.png',
+        riconPath: '/image/right_arrow.png',
+        info: '您发布的都在这'
+      },
+      {
+        name: '浏览历史',
+        iconPath: '/image/user.png',
+        riconPath: '/image/right_arrow.png',
+        info: '您浏览过的求职信息'
+      },
+    ]
   },
 
   /**

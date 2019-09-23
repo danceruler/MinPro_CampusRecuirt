@@ -1,1 +1,41 @@
 /* components/user/user-buttons/index.wxss */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  width: 700rpx;
+  margin: 10rpx auto;
+  border: 1rpx #fff solid;
+  box-shadow: 0px 0px 10rpx #70707085;
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  background-color: #fff;
+}
+
+.button-name {
+  font-size: 32rpx;
+}
+
+.button-info {
+  font-size: 28rpx;
+  color: #70707085;
+  margin-left: 10rpx;
+  margin-right: 15rpx;
+  flex: 1;
+  text-align: right;
+}
+
+.button::after {
+  border: none;
+}
+
+.icon {
+  margin-left: -10rpx;
+  margin-right: 10rpx;
+  width: 32rpx;
+  height: 32rpx;
+}

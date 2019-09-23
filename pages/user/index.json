@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "我的",
   "usingComponents": {
-    "user-info": "/components/user/user-info/index"
+    "user-info": "/components/user/user-info/index",
+    "user-buttons": "/components/user/user-buttons/index"
   }
 }

@@ -1,4 +1,5 @@
 <!--pages/user/index.wxml-->
 <view class="user-content">
   <user-info />
+  <user-buttons />
 </view>
