@@ -29,6 +29,7 @@ Page({
     }
   },
   onLoad: function () {
+    this.setData({ isLogin: app.globalData.isLogin, isAuth: app.globalData.isAuth });
     console.log(Reg)
   },
   getUserInfo: function(e) {

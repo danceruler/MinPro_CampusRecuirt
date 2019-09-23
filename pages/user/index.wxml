@@ -1,4 +1,6 @@
 <!--pages/user/index.wxml-->
 <view class="user-content">
-  <user-info />
+  <text wx:if="{{isLogin==1}}">{{user.uid}}</text>
+  <user-info wx:if="{{isLogin==1}}"/>
+  <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击登录</button>
 </view>

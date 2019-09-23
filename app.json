@@ -2,7 +2,8 @@
   "pages": [
     "pages/user/index",
     "pages/worklist/index",
-    "pages/workprogress/index"
+    "pages/workprogress/index",
+    "pages/index/index"
   ],
   "tabBar": {
     "custom": true,
