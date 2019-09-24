@@ -4,7 +4,7 @@ const Apis = require('../../utils/api.js')
 const util = require('../../utils/util.js')
 Page({
   onLoad:function(){
-
+    console.log(util.formatstrToDate("2019-09-24T09:56:54.7581759+08:00"))
   },
   onShow: function () {
     var that = this
@@ -27,7 +27,6 @@ Page({
         dataType: "application/json",
         success:function(result){
           result = JSON.parse(result.data)
-          console.log(result.jobs)
           for (var index in result.jobs){
             var indexString = 'list['+that.data.list.length+']'
             that.setData({
