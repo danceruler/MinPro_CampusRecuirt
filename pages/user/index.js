@@ -21,7 +21,6 @@ Page({
   }, 
   getUserInfo: function (e) {
     app.myLogin(this)
-    app.globalData.isLogin = 1
-    this.onShow()
+    this.onLoad()
   }
 })
