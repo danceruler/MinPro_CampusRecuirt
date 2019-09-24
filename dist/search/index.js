@@ -22,7 +22,7 @@ VantComponent({
         placeholderStyle: String,
         actionText: {
             type: String,
-            value: '取消'
+            value: '搜索'
         },
         background: {
             type: String,

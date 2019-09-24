@@ -1,4 +1,5 @@
 //index.js
+import Page from '../../common/page';
 //获取应用实例
 const app = getApp()
 const Reg = require('../../utils/reg.js')

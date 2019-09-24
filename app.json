@@ -89,7 +89,8 @@
     "van-overlay": "./dist/overlay/index",
     "van-circle": "./dist/circle/index",
     "van-grid": "./dist/grid/index",
-    "van-grid-item": "./dist/grid-item/index"
+    "van-grid-item": "./dist/grid-item/index",
+    "recruitListItem":"./components/recruitListItem/index"
   },
   "sitemapLocation": "sitemap.json"
 }

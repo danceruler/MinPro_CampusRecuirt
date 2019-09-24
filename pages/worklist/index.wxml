@@ -1,8 +1,28 @@
 <!--pages/worklist/index.wxml-->
 <view>
-<input placeholder='adsa'></input>
-<view wx:for="{{list}}" wx:key="unique">
-   <text> {{item.jobName}}</text>
-</view>
+ <van-search
+    value="{{ searchKey }}"
+    show-action
+    placeholder="请输入搜索关键词"
+    bind:change="onChange"
+    bind:search="onSearch"
+    bind:cancel="onCancel"
+    bind:clear="onClear"
+    class="{{scrollTop>0 ? 'topnavFixed' : 'topnavAbsolute'}}"
+  />
+  <view style='height:100rpx'></view>
+  <view style='height:50rpx'>这里放搜索条件</view>
+  <view wx:for="{{list}}" wx:key="unique">
+    <recruitListItem
+      num="2"
+      tag="标签"
+      price="2.00"
+      origin-price="10.00"
+      desc="描述信息"
+      title="{{ item.jobName }}"
+      thumb="{{ item.companyImg }}"
+    >
+    </recruitListItem>
+  </view>
 </view>
 
