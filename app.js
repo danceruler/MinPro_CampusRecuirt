@@ -8,19 +8,9 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    
   },
   onShow:function(){
-    var that = this
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          that.globalData.isLogin = 1
-        } else {
-          //没有获取授权的事件
-        }
-      }
-    })
   },
   globalData: {
     userInfo: {
@@ -32,7 +22,6 @@ App({
     isLogin:0
   },
   myLogin: function (obj) {
-    console.log('login')
     var that = this
     wx.getUserInfo({
       success: function (res) {
