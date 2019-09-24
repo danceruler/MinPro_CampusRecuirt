@@ -1,6 +1,7 @@
 // pages/worklist/index.js
 var app = getApp()
 const Apis = require('../../utils/api.js')
+const util = require('../../utils/util.js')
 Page({
   onLoad:function(){
 
@@ -20,7 +21,7 @@ Page({
           "maxTime": "",
           "uid": app.globalData.userInfo.uid,
           "userId": app.globalData.userInfo.id,
-          "requestTime": "2019-09-23T20:11:50.7709533+08:00"
+          "requestTime": util.formatTime(new Date())
         },
         method: 'post',
         dataType: "application/json",

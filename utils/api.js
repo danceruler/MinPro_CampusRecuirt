@@ -3,7 +3,7 @@ const domain = 'https://wxloginapi.820803.xyz/'
 const Apis = {
   //接口文档地址https://wxloginapi.820803.xyz/help
   //修改用户信息
-  'ChangeUserInfo': domain+'/api/UserCenter/ChangeUserInfo',
+  'ChangeUserInfo': domain+'api/UserCenter/ChangeUserInfo',
   //上传用户头像
   'UploadHeadImg': domain + 'api/UserCenter/UploadHeadImg',
   //我的收藏

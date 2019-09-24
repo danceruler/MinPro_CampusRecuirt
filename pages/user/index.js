@@ -21,6 +21,6 @@ Page({
   }, 
   getUserInfo: function (e) {
     app.myLogin(this)
-    this.onLoad()
+    this.onShow()
   }
 })
