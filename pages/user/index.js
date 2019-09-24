@@ -3,12 +3,11 @@ var app = getApp()
 
 Page({
   onLoad:function(){
-  },
-  onShow: function () {
-    if (app.globalData.isLogin == 1){
+    if (app.globalData.isLogin == 1) {
       app.myLogin(this)
     }
-    console.log(this.data)
+  },
+  onShow: function () {
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({

@@ -2,6 +2,9 @@
 var app = getApp()
 const Apis = require('../../utils/api.js')
 Page({
+  onLoad:function(){
+
+  },
   onShow: function () {
     var that = this
     if(this.data.list.length == 0){
