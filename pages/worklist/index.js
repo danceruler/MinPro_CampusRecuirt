@@ -9,7 +9,10 @@ Page({
       key:"",
       type:"",
       city:-1,
-      isExistsIntroCode:-1
+      isExistsIntroCode:-1,
+      scrollTop:0,
+      isUpSliding:0,
+      isDownSliding:0
     },
     list:[
     ],
@@ -39,10 +42,10 @@ Page({
     });
   },
   onSearch(event) {
-    this.setData({
-      page:1,
-      list:[]
-    })
+    // this.setData({
+    //   page:1,
+    //   list:[]
+    // })
     this.getMoreList()
   },
   onCancel() {
@@ -76,12 +79,33 @@ Page({
             [indexString]: result.jobs[index]
           })
         }
+        wx.stopPullDownRefresh()
       }
     })
   },
+  //页面事件
   onPageScroll: function (e) {//监听页面滚动
+    console.log(e.scrollTop, this.data.scrollTop)
+    //上滑
+    if(e.scrollTop >this.data.scrollTop){
+      this.getMoreList()
+      this.setData({
+        isDownSliding:1,
+        isUpSliding:0
+      })
+    }
+    //下滑
+    else{
+      this.setData({
+        isDownSliding: 0,
+        isUpSliding: 1
+      })
+    }
     this.setData({
       scrollTop: e.scrollTop
     })
   },
+  onPullDownRefresh:function(){
+    this.onSearch()
+  }
 })

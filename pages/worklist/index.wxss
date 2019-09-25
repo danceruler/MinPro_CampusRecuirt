@@ -1,13 +1,13 @@
 .topnavFixed{
-border-top-left-radius:20rpx;
-border-top-right-radius:20rpx;
-position:fixed;width:100%;height:100rpx; top:0rpx;background:white;z-index: 1;
+/* border-top-left-radius:20rpx;
+border-top-right-radius:20rpx; */
+position:fixed;width:100%;height:50rpx; background:white;z-index: 1;top:0rpx;
 }
 .topnavAbsolute{
-border-top-left-radius:20rpx;
-border-top-right-radius:20rpx;
-position:absolute;width:100%;height:100rpx; top:0rpx;background:white;z-index: 1;
+/* border-top-left-radius:20rpx;
+border-top-right-radius:20rpx; */
+width:100%;height:50rpx; background:white;
 }
 .recruitList{
-margin-top:100rpx;
+  margin-bottom: 120rpx
 }

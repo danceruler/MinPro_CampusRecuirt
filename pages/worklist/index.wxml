@@ -8,21 +8,21 @@
     bind:search="onSearch"
     bind:cancel="onCancel"
     bind:clear="onClear"
-    class="{{scrollTop>0 ? 'topnavFixed' : 'topnavAbsolute'}}"
   />
-  <view style='height:100rpx'></view>
-  <view style='height:50rpx'>这里放搜索条件</view>
-  <view wx:for="{{list}}" wx:key="unique">
-    <recruitListItem
-      num="2"
-      tag="标签"
-      price="2.00"
-      origin-price="10.00"
-      desc="描述信息"
-      title="{{ item.jobName }}"
-      thumb="{{ item.companyImg }}"
-    >
-    </recruitListItem>
+  <view class="{{ scrollTop > 100?'topnavFixed':'topnavAbsolute' }}">这里放搜索条件</view>
+  <view class='recruitList'>
+    <view wx:for="{{list}}" wx:key="unique" >
+      <recruitListItem
+        num="2"
+        tag="标签"
+        price="2.00"
+        origin-price="10.00"
+        desc="描述信息"
+        title="{{ item.jobName }}"
+        thumb="{{ item.companyImg }}"
+      >
+      </recruitListItem>
+    </view>
   </view>
 </view>
 
