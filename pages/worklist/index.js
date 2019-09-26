@@ -9,24 +9,22 @@ Page({
       key:"",
       type:"",
       city:-1,
-      isExistsIntroCode:-1,
-      scrollTop:0,
-      isUpSliding:0,
-      isDownSliding:0
+      isExistsIntroCode:-1
     },
     list:[
     ],
     page:1,
-    count:10
+    count:10,
+    maxTime:"",
+    isNoMoreData:0,
+    scrollTop: 0,
+    isUpSliding: 0,
+    isDownSliding: 0
   },
   onLoad: function () {
     this.getMoreList()
   },
   onShow: function () {
-    var that = this
-    if (this.data.list.length == 0) {
-      
-    }
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
@@ -42,10 +40,12 @@ Page({
     });
   },
   onSearch(event) {
-    // this.setData({
-    //   page:1,
-    //   list:[]
-    // })
+    this.setData({
+      page:1,
+      list:[],
+      maxTime: "",
+      isNoMoreData:0
+    })
     this.getMoreList()
   },
   onCancel() {
@@ -55,40 +55,68 @@ Page({
   //列表事件
   getMoreList(){
     var that = this
-    wx.request({
-      url: Apis.Urls.GetRecruits,
-      data: {
+    //当没有更多数据时执行操作
+    if(that.data.isNoMoreData){
+
+    }
+    //加载更多数据
+    else{
+      wx.showLoading({
+        title: '努力加载中',
+        mask:true
+      })
+      var data = {
         "key": that.data.condition.key,
         "type": that.data.condition.type,
         "cityId": that.data.condition.city,
         "isExistsIntroCode": that.data.condition.isExistsIntroCode,
         "page": that.data.page,
         "count": that.data.count,
-        "maxTime": "",
+        "maxTime": that.data.maxTime,
         "uid": app.globalData.userInfo.uid,
         "userId": app.globalData.userInfo.id,
-        "requestTime": util.formatTime(new Date())
-      },
-      method: 'post',
-      dataType: "application/json",
-      success: function (result) {
-        result = JSON.parse(result.data)
-        for (var index in result.jobs) {
-          var indexString = 'list[' + that.data.list.length + ']'
-          that.setData({
-            [indexString]: result.jobs[index]
-          })
-        }
-        wx.stopPullDownRefresh()
+        "requestTime": util.formatTime(new Date()),
+        "secret": app.createSecret()
       }
-    })
+      wx.request({
+        url: Apis.Urls.GetRecruits,
+        data: data,
+        method: 'post',
+        dataType: "application/json",
+        success: function (result) {
+          result = JSON.parse(result.data)
+          for (var index in result.jobs) {
+            var indexString = 'list[' + that.data.list.length + ']'
+            that.setData({
+              [indexString]: result.jobs[index]
+            })
+          }
+
+          that.setData({
+            page:that.data.page+1,
+            maxTime: result.minTime
+          })
+
+          //当没有更多数据
+          if (result.jobs.length < that.data.count) {
+            that.setData({
+              isNoMoreData: 1
+            })
+          }
+          
+          wx.hideLoading()
+          wx.stopPullDownRefresh()
+        }
+      })
+    }
+  },
+  onClickItem:function(e){
+    console.log(e.currentTarget.dataset.id)
   },
   //页面事件
   onPageScroll: function (e) {//监听页面滚动
-    console.log(e.scrollTop, this.data.scrollTop)
     //上滑
     if(e.scrollTop >this.data.scrollTop){
-      this.getMoreList()
       this.setData({
         isDownSliding:1,
         isUpSliding:0
@@ -107,5 +135,8 @@ Page({
   },
   onPullDownRefresh:function(){
     this.onSearch()
+  },
+  onReachBottom:function(){
+    this.getMoreList()
   }
 })

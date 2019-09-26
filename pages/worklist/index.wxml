@@ -9,7 +9,7 @@
     bind:cancel="onCancel"
     bind:clear="onClear"
   />
-  <view class="{{ scrollTop > 100?'topnavFixed':'topnavAbsolute' }}">这里放搜索条件</view>
+  <view class="{{ scrollTop > 120?'topnavFixed':'topnavAbsolute' }}">这里放搜索条件</view>
   <view class='recruitList'>
     <view wx:for="{{list}}" wx:key="unique" >
       <recruitListItem
@@ -20,9 +20,13 @@
         desc="描述信息"
         title="{{ item.jobName }}"
         thumb="{{ item.companyImg }}"
+        
+        data-id="{{item.id}}"
+        bind:tap="onClickItem"
       >
       </recruitListItem>
     </view>
+    <text class="{{ isNoMoreData == 1?'bottonTip_show':'bottonTip_hide' }}">滑到底了哦</text>
   </view>
 </view>
 

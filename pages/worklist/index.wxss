@@ -11,3 +11,14 @@ width:100%;height:50rpx; background:white;
 .recruitList{
   margin-bottom: 120rpx
 }
+
+.bottonTip_show{
+  display: block;
+  text-align: center;
+
+}
+
+.bottonTip_hide{
+  display: none;
+  text-align: center;
+}

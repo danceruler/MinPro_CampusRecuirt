@@ -1,6 +1,7 @@
 //app.js
 const Apis = require('/utils/api.js')
-
+const Secret = require('/utils/secret.js')
+const util = require('/utils/util.js')
 App({ 
   onLaunch: function () {
     console.log(Apis.Urls.ChangeUserInfo)
@@ -8,7 +9,7 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    
+    this.createSecret()
   },
   onShow:function(){
   },
@@ -53,5 +54,13 @@ App({
         })
       }
     })
+  },
+  createSecret:function(){
+    var data = {
+      date: util.formatTime(new Date()),
+      uid: this.globalData.userInfo.uid,
+      id: this.globalData.userInfo.id
+    }
+    return Secret.Encrypt(JSON.stringify(data))
   }
 })
