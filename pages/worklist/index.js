@@ -113,6 +113,12 @@ Page({
   onClickItem:function(e){
     console.log(e.currentTarget.dataset.id)
   },
+  selectCondition:function(){
+    var conditionStr = JSON.stringify(this.data.condition) 
+    wx.navigateTo({
+      url: 'codition/condition?conditionStr=' + conditionStr,
+    })
+  },
   //页面事件
   onPageScroll: function (e) {//监听页面滚动
     //上滑

@@ -9,7 +9,11 @@
     bind:cancel="onCancel"
     bind:clear="onClear"
   />
-  <view class="{{ scrollTop > 120?'topnavFixed':'topnavAbsolute' }}">这里放搜索条件</view>
+  <view class="{{ scrollTop > 120?'topnavFixed':'topnavAbsolute' }}" bind:tap="selectCondition">
+    <text>{{condition.type}}</text>
+    <text>{{condition.city}}</text>
+    点击选条件
+  </view>
   <view class='recruitList'>
     <view wx:for="{{list}}" wx:key="unique" >
       <recruitListItem
@@ -26,7 +30,7 @@
       >
       </recruitListItem>
     </view>
-    <text class="{{ isNoMoreData == 1?'bottonTip_show':'bottonTip_hide' }}">滑到底了哦</text>
+    <text class="{{ isNoMoreData == 1?'bottonTip_show':'bottonTip_hide' }}">没有数据了哦</text>
   </view>
 </view>
 

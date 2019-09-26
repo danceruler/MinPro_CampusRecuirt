@@ -3,7 +3,8 @@
     "pages/user/index",
     "pages/worklist/index",
     "pages/workprogress/index",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/worklist/codition/condition"
   ],
   "tabBar": {
     "custom": true,
@@ -90,7 +91,7 @@
     "van-circle": "./dist/circle/index",
     "van-grid": "./dist/grid/index",
     "van-grid-item": "./dist/grid-item/index",
-    "recruitListItem":"./components/recruitListItem/index"
+    "recruitListItem": "./components/recruitListItem/index"
   },
   "sitemapLocation": "sitemap.json"
 }

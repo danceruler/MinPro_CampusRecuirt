@@ -1,12 +1,16 @@
 .topnavFixed{
 /* border-top-left-radius:20rpx;
 border-top-right-radius:20rpx; */
-position:fixed;width:100%;height:50rpx; background:white;z-index: 1;top:0rpx;
+position:fixed;width:100%;height:50rpx; background:white;z-index: 1;top:0rpx; 
+ display: flex;
+  flex-direction:row;
 }
 .topnavAbsolute{
 /* border-top-left-radius:20rpx;
 border-top-right-radius:20rpx; */
 width:100%;height:50rpx; background:white;
+display: flex;
+  flex-direction:row;
 }
 .recruitList{
   margin-bottom: 120rpx

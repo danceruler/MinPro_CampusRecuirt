@@ -1,0 +1,27 @@
+/* pages/worklist/codition/condition.wxss */
+
+.dark,
+.light {
+  color: #fff;
+  font-size: 13px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 10px;
+  background-clip: content-box;
+}
+
+.dark {
+  background-color: #39a9ed;
+}
+
+.light {
+  background-color: #66c6f2;
+}
+
+.savebutton{
+  width: 94%;
+  margin-left: 3%;
+  margin-top: 10%;
+  background-color: #66c6f2;
+  color: white
+}

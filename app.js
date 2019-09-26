@@ -3,24 +3,78 @@ const Apis = require('/utils/api.js')
 const Secret = require('/utils/secret.js')
 const util = require('/utils/util.js')
 App({ 
+  globalData: {
+    userInfo: {
+      uid: "",
+      id: 0
+    },
+    testApiDomain: 'http://localhost:60461/api/',
+    myApiDomain: 'https://wxloginapi.820803.xyz/api/',
+    isLogin: 0,
+    //筛选条件
+    screen:{
+      "jobTypes": [
+        {
+          "id": 1,
+          "name": "产品"
+        },
+        {
+          "id": 2,
+          "name": "技术"
+        },
+        {
+          "id": 3,
+          "name": "运营"
+        },
+        {
+          "id": 4,
+          "name": "设计"
+        },
+        {
+          "id": 5,
+          "name": "市场"
+        },
+        {
+          "id": 6,
+          "name": "职能"
+        }
+      ],
+      "citys": [
+        {
+          "id": 1,
+          "name": "北京"
+        },
+        {
+          "id": 2,
+          "name": "上海"
+        },
+        {
+          "id": 3,
+          "name": "深圳"
+        },
+        {
+          "id": 4,
+          "name": "广州"
+        },
+        {
+          "id": 5,
+          "name": "杭州"
+        },
+        {
+          "id": 6,
+          "name": "其它"
+        }
+      ]
+    }
+  },
   onLaunch: function () {
-    console.log(Apis.Urls.ChangeUserInfo)
+    //console.log(this.createSecret())
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    this.createSecret()
   },
   onShow:function(){
-  },
-  globalData: {
-    userInfo: {
-      uid:"",
-      id:0
-    },
-    testApiDomain:'http://localhost:60461/api/',
-    myApiDomain:'https://wxloginapi.820803.xyz/api/',
-    isLogin:0
   },
   myLogin: function (obj) {
     var that = this
@@ -42,7 +96,6 @@ App({
                   that.globalData.isLogin = 1
                   that.globalData.userInfo = JSON.parse(data.data).user
                   obj.setData({ isLogin: 1, user: JSON.parse(data.data).user }) 
-                  console.log(obj.data)
                   return JSON.parse(data.data).user
                 }
               },
