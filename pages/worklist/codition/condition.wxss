@@ -2,20 +2,25 @@
 
 .dark,
 .light {
-  color: #fff;
+  color: #000;
   font-size: 13px;
   line-height: 40px;
   text-align: center;
   margin-bottom: 10px;
   background-clip: content-box;
+  border-width: medium;
+  
+
 }
 
 .dark {
-  background-color: #39a9ed;
+  border-color: #66c6f2;
+  background-color: #66c6f2;
 }
 
 .light {
-  background-color: #66c6f2;
+  border-color: #39a9ed;
+  background-color:rgba(211, 211, 211, 0.925);
 }
 
 .savebutton{
@@ -24,4 +29,8 @@
   margin-top: 10%;
   background-color: #66c6f2;
   color: white
+}
+
+.conditionlabel{
+  
 }

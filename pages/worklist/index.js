@@ -1,4 +1,5 @@
 // pages/worklist/index.js
+
 var app = getApp()
 const Apis = require('../../utils/api.js')
 const util = require('../../utils/util.js')
@@ -9,6 +10,7 @@ Page({
       key:"",
       type:"",
       city:-1,
+      cityName:"",
       isExistsIntroCode:-1
     },
     list:[
@@ -19,10 +21,14 @@ Page({
     isNoMoreData:0,
     scrollTop: 0,
     isUpSliding: 0,
-    isDownSliding: 0
+    isDownSliding: 0,
+    icons:{
+      condition:'../../image/ico/筛选/筛选.png'
+    }
   },
   onLoad: function () {
     this.getMoreList()
+    console.log(this.data.icons)
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
@@ -31,6 +37,9 @@ Page({
         selected: 0
       })
     }
+  },
+  onReady:function(){
+    console.log(this.data)
   },
   //搜索框事件
   onChange(e) {
@@ -53,11 +62,10 @@ Page({
   onClear() {
   },
   //列表事件
-  getMoreList(){
+  getMoreList(isbottom){
     var that = this
     //当没有更多数据时执行操作
     if(that.data.isNoMoreData){
-
     }
     //加载更多数据
     else{
@@ -97,15 +105,18 @@ Page({
             maxTime: result.minTime
           })
 
-          //当没有更多数据
-          if (result.jobs.length < that.data.count) {
-            that.setData({
-              isNoMoreData: 1
-            })
+          if (isbottom == 1){
+            //当没有更多数据
+            if (result.jobs.length < that.data.count) {
+              that.setData({
+                isNoMoreData:1
+              })
+            }
           }
-          
+
           wx.hideLoading()
           wx.stopPullDownRefresh()
+          
         }
       })
     }
@@ -143,6 +154,6 @@ Page({
     this.onSearch()
   },
   onReachBottom:function(){
-    this.getMoreList()
+    this.getMoreList(1)
   }
 })

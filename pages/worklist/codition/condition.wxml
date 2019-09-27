@@ -10,7 +10,7 @@
     </demo-block>
     <demo-block title="城市" padding>
       <van-row gutter="20" >
-        <view wx:for="{{screen.citys}}" wx:key="unique">
+        <view wx:for="{{screen.cities}}" wx:key="unique">
           <van-col span="8" custom-class="{{condition.city == item.id?'dark':'light'}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="chooseCity">{{item.name}}</van-col>
         </view>
       </van-row>
@@ -22,6 +22,5 @@
           </van-row>
     </demo-block>
   </view>
-  <button class='savebutton' bindtap='onSave' padding>保存</button>
- 
+  <button class='savebutton' bindtap='onSave' padding>筛选</button>
 </view>

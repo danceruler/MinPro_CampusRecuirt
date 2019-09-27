@@ -36,6 +36,9 @@ const Apis = {
   'ChangeCollect': domain + 'api/Recruit/ChangeCollect'
 }
 
+
+
 module.exports = {
   Urls: Apis
 }
+

@@ -9,10 +9,13 @@
     bind:cancel="onCancel"
     bind:clear="onClear"
   />
-  <view class="{{ scrollTop > 120?'topnavFixed':'topnavAbsolute' }}" bind:tap="selectCondition">
-    <text>{{condition.type}}</text>
-    <text>{{condition.city}}</text>
-    点击选条件
+  <view class="{{ scrollTop > 120?'topnavFixed':'topnavAbsolute' }}" >
+    <image class="condition_ico" src="../../image/ico/筛选/筛选.png" bind:tap="selectCondition"></image>
+    <text bind:tap="selectCondition" style='margin-right:3rpx'>筛选</text>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.type == ''?'display:none':'display:block'}}">{{condition.type}}</button>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.cityName == ''?'display:none':'display:block'}}">{{condition.cityName}}</button>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.isExistsIntroCode ==  -1?'display:none':'display:block'}}">{{condition.isExistsIntroCode==1?'有内推码':'无内推码'}}</button>
+
   </view>
   <view class='recruitList'>
     <view wx:for="{{list}}" wx:key="unique" >

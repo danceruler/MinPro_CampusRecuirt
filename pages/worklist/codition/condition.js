@@ -32,8 +32,10 @@ Page({
   chooseCity:function(e){
     if (this.data.condition.city == e.currentTarget.dataset.id){
       this.data.condition.city = -1
+      this.data.condition.cityName = ""
     }else{
       this.data.condition.city = e.currentTarget.dataset.id
+      this.data.condition.cityName = this.data.screen.cities[this.data.condition.city-1].name
     }
     this.setData({
       condition: this.data.condition
@@ -55,7 +57,8 @@ Page({
     prePage.setData({
       condition: this.data.condition
     })
-    console.log(prePage.data)
+    console.log(prePage.data.condition)
+    prePage.onSearch()
     wx.navigateBack({
 
     })

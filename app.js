@@ -13,56 +13,56 @@ App({
     isLogin: 0,
     //筛选条件
     screen:{
-      "jobTypes": [
+      jobTypes: [
         {
-          "id": 1,
-          "name": "产品"
+          id: 1,
+          name: "产品"
         },
         {
-          "id": 2,
-          "name": "技术"
+          id: 2,
+          name: "技术"
         },
         {
-          "id": 3,
-          "name": "运营"
+          id: 3,
+          name: "运营"
         },
         {
-          "id": 4,
-          "name": "设计"
+          id: 4,
+          name: "设计"
         },
         {
-          "id": 5,
-          "name": "市场"
+          id: 5,
+          name: "市场"
         },
         {
-          "id": 6,
-          "name": "职能"
+          id: 6,
+          name: "职能"
         }
       ],
-      "citys": [
+      cities: [
         {
-          "id": 1,
-          "name": "北京"
+          id: 1,
+          name: "北京"
         },
         {
-          "id": 2,
-          "name": "上海"
+          id: 2,
+          name: "上海"
         },
         {
-          "id": 3,
-          "name": "深圳"
+          id: 3,
+          name: "深圳"
         },
         {
-          "id": 4,
-          "name": "广州"
+          id: 4,
+          name: "广州"
         },
         {
-          "id": 5,
-          "name": "杭州"
+          id: 5,
+          name: "杭州"
         },
         {
-          "id": 6,
-          "name": "其它"
+          id: 6,
+          name: "其它"
         }
       ]
     }
