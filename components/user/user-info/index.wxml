@@ -10,7 +10,7 @@
     </view>
     <view class="user-attr">
       <image class="icon" src="{{ positionIconPath }}" />
-      <text class="user-attr-text">算法 后端 前端 运维</text>
+      <text class="user-attr-text">算法 后端 前端</text>
     </view>
   </view>
   <view class="user-buttons">

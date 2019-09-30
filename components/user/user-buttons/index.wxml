@@ -1,2 +1,9 @@
 <!--components/user/user-buttons/index.wxml-->
-<text>components/user/user-buttons/index.wxml</text>
+<view class="buttons">
+  <button class="button" wx:for="{{ list }}" wx:for-item="item" wx:key="name">
+    <image class="icon" src="{{ item.iconPath }}" />
+    <text class="button-name">{{ item.name }}</text>
+    <text class="button-info">{{ item.info }}</text>
+    <image class="icon" src="{{ item.riconPath }}" />
+  </button>
+</view>
