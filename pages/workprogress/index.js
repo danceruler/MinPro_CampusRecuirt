@@ -3,7 +3,6 @@ var app = getApp()
 const Apis = require('../../utils/api.js')
 const util = require('../../utils/util.js')
 
-
 Page({
   data: {
     condition: {
