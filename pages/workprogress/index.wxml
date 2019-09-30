@@ -1,2 +1,3 @@
 <!--pages/workprogress/index.wxml-->
 <text>pages/workprogress/index.wxml</text>
+<button bindtap="testapi">测试同步使用方法</button>

@@ -39,7 +39,7 @@ Component({
   methods: {
     switchTab(e) {
       const data = e.currentTarget.dataset
-      console.log(data)
+      //console.log(data)
       const url = data.path
       wx.switchTab({
         url: url,

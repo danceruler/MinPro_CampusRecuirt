@@ -1,6 +1,6 @@
 <!--components/user/user-buttons/index.wxml-->
 <view class="buttons">
-  <button class="button" wx:for="{{ list }}" wx:for-item="item">
+  <button class="button" wx:for="{{ list }}" wx:for-item="item" wx:key="name">
     <image class="icon" src="{{ item.iconPath }}" />
     <text class="button-name">{{ item.name }}</text>
     <text class="button-info">{{ item.info }}</text>

@@ -1,4 +1,5 @@
 //index.js
+import Page from '../../common/page';
 //获取应用实例
 const app = getApp()
 const Reg = require('../../utils/reg.js')
@@ -29,6 +30,7 @@ Page({
     }
   },
   onLoad: function () {
+    this.setData({ isLogin: app.globalData.isLogin, isAuth: app.globalData.isAuth });
     console.log(Reg)
   },
   getUserInfo: function(e) {

@@ -1,2 +1,39 @@
 <!--pages/worklist/index.wxml-->
-<text>pages/worklist/index.wxml</text>
+<view>
+ <van-search
+    value="{{ searchKey }}"
+    show-action
+    placeholder="请输入搜索关键词"
+    bind:change="onChange"
+    bind:search="onSearch"
+    bind:cancel="onCancel"
+    bind:clear="onClear"
+  />
+  <view class="{{ scrollTop > 120?'topnavFixed':'topnavAbsolute' }}" >
+    <image class="condition_ico" src="../../image/ico/筛选/筛选.png" bind:tap="selectCondition"></image>
+    <text bind:tap="selectCondition" style='margin-right:3rpx'>筛选</text>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.type == ''?'display:none':'display:block'}}">{{condition.type}}</button>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.cityName == ''?'display:none':'display:block'}}">{{condition.cityName}}</button>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.isExistsIntroCode ==  -1?'display:none':'display:block'}}">{{condition.isExistsIntroCode==1?'有内推码':'无内推码'}}</button>
+
+  </view>
+  <view class='recruitList'>
+    <view wx:for="{{list}}" wx:key="unique" >
+      <recruitListItem
+        num="2"
+        tag="标签"
+        price="2.00"
+        origin-price="10.00"
+        desc="描述信息"
+        title="{{ item.jobName }}"
+        thumb="{{ item.companyImg }}"
+        
+        data-id="{{item.id}}"
+        bind:tap="onClickItem"
+      >
+      </recruitListItem>
+    </view>
+    <text class="{{ isNoMoreData == 1?'bottonTip_show':'bottonTip_hide' }}">没有数据了哦</text>
+  </view>
+</view>
+

@@ -1,0 +1,26 @@
+<!--pages/worklist/codition/condition.wxml-->
+<view>
+  <view>
+    <demo-block title="岗位类型" padding>
+      <van-row gutter="20" >
+        <view wx:for="{{screen.jobTypes}}" wx:key="unique">
+          <van-col span="8" custom-class="{{condition.type == item.name?'dark':'light'}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="chooseJobType">{{item.name}}</van-col>
+        </view>
+      </van-row>
+    </demo-block>
+    <demo-block title="城市" padding>
+      <van-row gutter="20" >
+        <view wx:for="{{screen.cities}}" wx:key="unique">
+          <van-col span="8" custom-class="{{condition.city == item.id?'dark':'light'}}" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="chooseCity">{{item.name}}</van-col>
+        </view>
+      </van-row>
+    </demo-block>
+    <demo-block title="是否有内推码" padding>
+      <van-row gutter="20" >
+          <van-col span="8" custom-class="{{condition.isExistsIntroCode==1?'dark':'light'}}" data-value="1" bindtap="chooseIntroCode">有</van-col>
+          <van-col span="8" custom-class="{{condition.isExistsIntroCode==0?'dark':'light'}}" data-value="0" bindtap="chooseIntroCode">无</van-col>
+          </van-row>
+    </demo-block>
+  </view>
+  <button class='savebutton' bindtap='onSave' padding>筛选</button>
+</view>

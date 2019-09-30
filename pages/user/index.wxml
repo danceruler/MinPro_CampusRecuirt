@@ -2,4 +2,58 @@
 <view class="user-content">
   <user-info />
   <user-buttons />
+  <text wx:if="{{isLogin==1}}">{{user.uid}}</text>
+  <user-info wx:if="{{isLogin==1}}"/>
+  <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击登录</button>
+  <van-cell title="展示弹出层" is-link bind:click="showBasic" />
+  <van-popup
+    show="{{ show.basic }}"
+    custom-style="padding: 16px 16px 160px"
+    bind:close="hideBasic"
+  >
+    内容
+  </van-popup>
+  <demo-block title="弹出位置">
+  <van-cell title="顶部弹出" is-link bind:click="showTop" />
+  <van-cell title="底部弹出" is-link bind:click="showBottom" />
+  <van-cell title="左侧弹出" is-link bind:click="showLeft" />
+  <van-cell title="右侧弹出" is-link bind:click="showRight" />
+
+  <van-popup
+    show="{{ show.top }}"
+    position="top"
+    custom-style="height: 20%"
+    bind:close="hideTop"
+  />
+  <van-popup
+    show="{{ show.bottom }}"
+    position="bottom"
+    custom-style="height: 20%"
+    bind:close="hideBottom"
+  />
+  <van-popup
+    show="{{ show.left }}"
+    position="left"
+    custom-style="width: 20%; height: 100%"
+    bind:close="hideLeft"
+  />
+  <van-popup
+    show="{{ show.right }}"
+    position="right"
+    custom-style="width: 20%; height: 100%"
+    bind:close="hideRight"
+  />
+</demo-block>
+<demo-block title="选择完整时间">
+  <van-datetime-picker
+    type="datetime"
+    data-type="datetime"
+    loading="{{ loading }}"
+    value="{{ currentDate1 }}"
+    min-date="{{ minDate }}"
+    bind:input="onInput"
+  />
+</demo-block>
+<van-toast id="van-toast" />
+>>>>>>> master
 </view>
