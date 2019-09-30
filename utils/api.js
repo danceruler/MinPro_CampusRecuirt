@@ -2,6 +2,8 @@ const domain = 'https://wxloginapi.820803.xyz/'
 
 const Apis = {
   //接口文档地址https://wxloginapi.820803.xyz/help
+  //测试同步请求接口，将在5秒后返回
+  'Test': domain +'api/WxLogin/Test',
   //修改用户信息
   'ChangeUserInfo': domain+'api/UserCenter/ChangeUserInfo',
   //上传用户头像
