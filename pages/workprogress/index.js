@@ -25,14 +25,15 @@ Page({
     }
   },
   async testapi() {
-    var data = {
-      "key": this.data.condition.key,
-      "type": this.data.condition.type,
-      "cityId": this.data.condition.city,
-      "isExistsIntroCode": this.data.condition.isExistsIntroCode,
-      "page": this.data.page,
-      "count": this.data.count,
-      "maxTime": this.data.maxTime,
+    var that = this
+    var data = await {
+      "key": that.data.condition.key,
+      "type": that.data.condition.type,
+      "cityId": that.data.condition.city,
+      "isExistsIntroCode": that.data.condition.isExistsIntroCode,
+      "page": that.data.page,
+      "count": that.data.count,
+      "maxTime": that.data.maxTime,
       "uid": app.globalData.userInfo.uid,
       "userId": app.globalData.userInfo.id,
       "requestTime": util.formatTime(new Date()),
@@ -44,33 +45,36 @@ Page({
       method: 'post',
       dataType: 'application/json',
       success: function (res) {
-        console.log(1, res)
+        console.log(res)
       },
       fail: function (res) { },
       complete: function (res) { },
     })
+    await console.log(1)
     await wx.request({
       url: Apis.Urls.GetRecruits,
       data: data,
       method: 'post',
       dataType: 'application/json',
       success: function (res) {
-        console.log(2, res)
+        console.log(res)
       },
       fail: function (res) { },
       complete: function (res) { },
     })
+    await console.log(2)
     await wx.request({
       url: Apis.Urls.GetRecruits,
       data: data,
       method: 'post',
       dataType: 'application/json',
       success: function (res) {
-        console.log(3, res)
+        console.log(res)
       },
       fail: function (res) { },
       complete: function (res) { },
     })
+    await console.log(3)
   },
   onLoad: function () {
 
