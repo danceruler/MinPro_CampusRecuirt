@@ -37,7 +37,7 @@ Component({
   methods: {
     config: function() {
       wx:wx.navigateTo({
-        url: '/pages/userconfig/index'
+        url: '/pages/user/userconfig/index'
       })
     }
   }

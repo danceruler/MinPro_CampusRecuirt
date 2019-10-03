@@ -1,0 +1,27 @@
+/* pages/worklist/newwork/index.wxss */
+.user-config {
+  display: flex;
+  width: 750rpx;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  width: 700rpx;
+  margin: 10rpx auto;
+}
+
+.section-title {
+  color: silver;
+  margin: 5rpx;
+}
+
+.section-input {
+  color: #000;
+  border-bottom: 1px solid silver;
+}
+
+.btn-area {
+  width: 700rpx;
+  margin: 10rpx auto;
+}

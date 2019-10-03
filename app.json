@@ -4,10 +4,12 @@
     "pages/worklist/index",
     "pages/workprogress/index",
     "pages/worklist/codition/condition",
-    "pages/usercollect/index",
-    "pages/userpublish/index",
-    "pages/userhistory/index",
-    "pages/userconfig/index"
+    "pages/user/usercollect/index",
+    "pages/user/userpublish/index",
+    "pages/user/userhistory/index",
+    "pages/user/userconfig/index",
+    "pages/worklist/newwork/index",
+    "pages/worklist/work/work"
   ],
   "tabBar": {
     "custom": true,

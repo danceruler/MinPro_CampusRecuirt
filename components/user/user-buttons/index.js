@@ -17,21 +17,21 @@ Component({
         iconPath: '/image/user.png',
         riconPath: '/image/right_arrow.png',
         info: '您收藏的都在这',
-        url: '/pages/usercollect/index'
+        url: '/pages/user/usercollect/index'
       },
       {
         name: '我的发布',
         iconPath: '/image/user.png',
         riconPath: '/image/right_arrow.png',
         info: '您发布的都在这',
-        url: '/pages/userpublish/index'
+        url: '/pages/user/userpublish/index'
       },
       {
         name: '浏览历史',
         iconPath: '/image/user.png',
         riconPath: '/image/right_arrow.png',
         info: '您浏览过的求职信息',
-        url: '/pages/userhistory/index'
+        url: '/pages/user/userhistory/index'
       },
     ]
   },

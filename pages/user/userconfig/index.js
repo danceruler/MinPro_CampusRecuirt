@@ -1,11 +1,19 @@
 // pages/userconfig/index.js
+var app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    userImagePath: "/image/user.png"
+  },
+
+  onLoad: function() {
+    this.setData({
+      userImagePath: app.globalData.userInfo.headUrl
+    })
   },
 
   formSubmit: function (e) {

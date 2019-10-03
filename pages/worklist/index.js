@@ -130,6 +130,18 @@ Page({
       url: 'codition/condition?conditionStr=' + conditionStr,
     })
   },
+  clearCondition: function(){
+    this.setData({
+      condition: {
+        key: "",
+        type: "",
+        city: -1,
+        cityName: "",
+        isExistsIntroCode: -1
+      },
+    })
+    this.onSearch()
+  },
   //页面事件
   onPageScroll: function (e) {//监听页面滚动
     //上滑
@@ -155,5 +167,12 @@ Page({
   },
   onReachBottom:function(){
     this.getMoreList(1)
+  },
+
+  openNewWork: function() {
+    wx:wx.navigateTo({
+      url: 'newwork/index',
+    })
   }
+
 })
