@@ -62,10 +62,9 @@ border-top-right-radius:20rpx; */
 
 .fixedNewWork {
   position: fixed;
-  /* width: 50rpx;
-  height: 50rpx;
-  border-radius: 25rpx; */
-  bottom: 120rpx;
+  width: 80rpx;
+  height: 80rpx;
+  bottom: 180rpx;
   right: 30rpx;
   border-radius: 40rpx;
   background-color: #fff;
