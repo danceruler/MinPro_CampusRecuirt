@@ -1,10 +1,10 @@
-// components/worklist/work-list/index.js
+// components/worklist/work-item/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    data: Array
+    data: Object
   },
 
   /**
@@ -18,11 +18,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onclick: function () {
+      console.log(this.data)
+    }
   },
 
   lifetimes: {
-    ready: function(){
+    ready: function () {
       console.log(this.properties)
     }
   }

@@ -1,5 +1,5 @@
 <!--components/user/user-info/index.wxml-->
-<view class="user-info">
+<view class="user-info" bindtap="config">
   <view class="line" />
   <image src="{{ userAvaterPath }}" class="user-avater" />
   <view class="user-detail">

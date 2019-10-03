@@ -1,1 +1,6 @@
 /* components/worklist/work-list/index.wxss */
+.work-list {
+  display: flex;
+  flex-direction: column;
+  width: 750rpx;
+}

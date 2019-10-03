@@ -17,8 +17,10 @@
     <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.isExistsIntroCode ==  -1?'display:none':'display:block'}}">{{condition.isExistsIntroCode==1?'有内推码':'无内推码'}}</button>
 
   </view>
+  
   <view class='recruitList'>
-    <view wx:for="{{list}}" wx:key="unique" >
+    <work-list data="{{ list }}" />
+    <!-- <view wx:for="{{list}}" wx:key="unique" >
       <recruitListItem
         num="2"
         tag="标签"
@@ -32,8 +34,8 @@
         bind:tap="onClickItem"
       >
       </recruitListItem>
-    </view>
-    <text class="{{ isNoMoreData == 1?'bottonTip_show':'bottonTip_hide' }}">没有数据了哦</text>
+    </view> -->
+    <text class="{{ isNoMoreData == 1?'bottonTip_show':'bottonTip_hide' }}" style="margin-top: 30rpx;">没有数据了哦</text>
   </view>
 </view>
 

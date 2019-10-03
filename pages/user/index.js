@@ -29,6 +29,9 @@ Page({
         selected: 2
       })
     }
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
   },
   data:{
     isLogin:0,
@@ -36,74 +39,12 @@ Page({
     basic: false,
     minDate: new Date(2018, 0, 1).getTime(),
     currentDate1: new Date(2018, 2, 31).getTime(),
-    loading: false
-  }, 
+    loading: false,
+    isUpSliding: 0,
+    scrollTop: 0,
+  },
   getUserInfo: function (e) {
     app.myLogin(this)
     this.onShow()
   },
-  toggle(type, show) {
-    this.setData({
-      [`show.${type}`]: show
-    });
-  },
-  showBasic() {
-    this.toggle('basic', true);
-  },
-  hideBasic() {
-    this.toggle('basic', false);
-  },
-  showTop() {
-    this.toggle('top', true);
-  },
-
-  hideTop() {
-    this.toggle('top', false);
-  },
-
-  showLeft() {
-    this.toggle('left', true);
-  },
-
-  hideLeft() {
-    this.toggle('left', false);
-  },
-
-  showRight() {
-    this.toggle('right', true);
-  },
-
-  hideRight() {
-    this.toggle('right', false);
-  },
-
-  showBottom() {
-    this.toggle('bottom', true);
-  },
-
-  hideBottom() {
-    this.toggle('bottom', false);
-  },
-
-  onInput(event) {
-    const { detail, currentTarget } = event;
-    const result = this.getResult(detail, currentTarget.dataset.type);
-    Toast(result);
-  },
-
-  getResult(time, type) {
-    const date = new Date(time);
-    switch (type) {
-      case 'datetime':
-        return date.toLocaleString();
-      case 'date':
-        return date.toLocaleDateString();
-      case 'year-month':
-        return `${date.getFullYear()}/${date.getMonth() + 1}`;
-      case 'time':
-        return time;
-      default:
-        return '';
-    }
-  }
 })

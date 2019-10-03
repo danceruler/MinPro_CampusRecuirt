@@ -99,7 +99,7 @@ Page({
               [indexString]: result.jobs[index]
             })
           }
-
+          console.log(that.data.list) // 对应数据填补去work-item里面的wxml调
           that.setData({
             page:that.data.page+1,
             maxTime: result.minTime
