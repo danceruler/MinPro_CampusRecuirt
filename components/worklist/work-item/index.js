@@ -18,14 +18,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onclick: function () {
-      console.log(this.data)
+    onclick: function (value) {
+      let data = JSON.stringify(value)
+      wx:wx.navigateTo({
+        url: '/pages/worklist/work/work?workInfo=' + data,
+      })
     }
   },
-
-  lifetimes: {
-    ready: function () {
-      console.log(this.properties)
-    }
-  }
 })

@@ -2,6 +2,7 @@
   "usingComponents": {
     "work-list": "/components/worklist/work-list/index"
   },
+  "navigationBarTitleText": "招聘列表",
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark"
 }

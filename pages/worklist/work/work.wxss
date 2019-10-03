@@ -1,1 +1,36 @@
-/* pages/worklist/work/work.wxss */
+.work {
+  width: 750rpx;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.work-col-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.work-row-info {
+  display: flex;
+  align-items: center;
+}
+
+.work-name {
+  font-size: 40rpx;
+  flex: 1;
+  margin-left: 20rpx;
+  line-height: 30rpx;
+  font-weight: bold;
+}
+
+.work-conpany {
+  font-size: 25rpx;
+  text-align: center;
+  margin-right: 20rpx;
+}
+
+.work-sub-text {
+  font-size: 20rpx;
+  color: silver;
+}

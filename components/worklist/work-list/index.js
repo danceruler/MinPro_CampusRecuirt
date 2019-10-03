@@ -23,7 +23,6 @@ Component({
 
   lifetimes: {
     ready: function(){
-      console.log(this.properties)
     }
   }
 })

@@ -1,5 +1,5 @@
 <!--components/worklist/work-item/index.wxml-->
-<view class="item" bindtap="onclick">
+<view class="item" bindtap="onclick" data-data="{{ data }}">
   <image src="{{ data.companyImg }}" class="item-img" />
   <view class="item-basic-info">
     <text class="text-name" style="margin-left: 20rpx;margin-bottom: 20rpx;">{{ data.jobName }}</text>
