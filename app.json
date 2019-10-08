@@ -3,8 +3,17 @@
     "pages/user/index",
     "pages/worklist/index",
     "pages/workprogress/index",
+    "pages/worklist/codition/condition",
+    "pages/user/usercollect/index",
+    "pages/user/userpublish/index",
+    "pages/user/userhistory/index",
+    "pages/user/userconfig/index",
+    "pages/worklist/newwork/index",
+    "pages/worklist/work/work",
     "pages/index/index",
-    "pages/worklist/codition/condition"
+    "pages/logs/logs",
+    "pages/worklist/newwork/choosecompany/index",
+    "pages/worklist/newwork/addcompany/index"
   ],
   "tabBar": {
     "custom": true,

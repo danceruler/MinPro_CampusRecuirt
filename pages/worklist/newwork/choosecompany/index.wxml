@@ -1,0 +1,24 @@
+<!--pages/worklist/newwork/choosecompany/index.wxml-->
+<view>
+ <van-search
+    value="{{ searchKey }}"
+    show-action
+    placeholder="请输入搜索关键词"
+    bind:change="onChange"
+    bind:search="onSearch"
+    bind:cancel="onCancel"
+    bind:clear="onClear"
+  />
+  <view wx:for="{{ myList }}"  wx:key="id">
+    <listitem
+      imgUrl="{{item.headUrl}}"
+      companyName="{{ item.name }}"
+    />
+  </view>
+  <view wx:for="{{ allList }}"  wx:key="id">
+    <listitem
+      imgUrl="{{item.headUrl}}"
+      companyName="{{ item.name }}"
+    />
+  </view>
+</view>

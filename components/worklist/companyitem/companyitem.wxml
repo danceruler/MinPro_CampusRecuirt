@@ -1,0 +1,5 @@
+<!--components/worklist/companyitem/companyitem.wxml-->
+<view>
+<image src="{{imgUrl}}"></image>
+<text>{{companyName}}</text>
+</view>

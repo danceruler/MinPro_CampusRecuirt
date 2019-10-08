@@ -1,2 +1,9 @@
 <!--components/worklist/work-list/index.wxml-->
-<text>components/worklist/work-list/index.wxml</text>
+<view class="work-list">
+  <work-item
+  wx:for="{{ data }}"
+  wx:for-item="item"
+  wx:key="positionName"
+  data="{{ item }}"
+  />
+</view>

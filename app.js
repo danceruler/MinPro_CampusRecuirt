@@ -95,6 +95,7 @@ App({
                 }else{
                   that.globalData.isLogin = 1
                   that.globalData.userInfo = JSON.parse(data.data).user
+                 
                   obj.setData({ isLogin: 1, user: JSON.parse(data.data).user }) 
                   return JSON.parse(data.data).user
                 }
@@ -115,5 +116,31 @@ App({
       id: this.globalData.userInfo.id
     }
     return Secret.Encrypt(JSON.stringify(data))
+  },
+  changeUserInfo(userinfo){
+    console.log(userinfo)
+    var that = this
+    var data = {
+      headUrl: userinfo.headUrl,
+      sex:userinfo.sex,
+      schoolName: userinfo.schoolName,
+      wishJob: userinfo.wishJob,
+      phoneNum: userinfo.phoneNum,
+      uid: userinfo.uid,
+      userId: userinfo.id,
+      requestTime: util.formatTime(new Date()),
+      secret: this.createSecret(),
+    }
+    wx.request({
+      url: Apis.Urls.ChangeUserInfo,
+      method:'post',
+      data:data,
+      dataType: "application/json",
+      success:function(result){
+        result = JSON.parse(result.data)
+        that.globalData.userInfo = result.user
+        wx.hideLoading()
+      }
+    })
   }
 })

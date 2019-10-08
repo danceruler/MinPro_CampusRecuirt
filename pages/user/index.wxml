@@ -1,10 +1,16 @@
 <!--pages/user/index.wxml-->
 <view class="user-content">
-  <user-info />
-  <user-buttons />
-  <text wx:if="{{isLogin==1}}">{{user.uid}}</text>
-  <user-info wx:if="{{isLogin==1}}"/>
+  <view wx:if="{{isLogin==1}}">
+    <user-info 
+      userName="{{user.nickname}}"
+      userAvaterPath="{{user.headUrl}}"
+      schoolName="{{user.schoolName}}"
+      wishJob="{{user.wishJob}}"
+    />
+  </view>
   <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击登录</button>
+  <user-buttons />
+  
   <van-cell title="展示弹出层" is-link bind:click="showBasic" />
   <van-popup
     show="{{ show.basic }}"
@@ -55,4 +61,9 @@
   />
 </demo-block>
 <van-toast id="van-toast" />
+  <user-info wx:if="{{ isLogin == 1 }}"/>
+  <van-button icon="contact" type="primary" wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo" custom-style="width: 400rpx;" style="margin: 20rpx auto;">
+  点击登录
+  </van-button>
+  <user-buttons />
 </view>

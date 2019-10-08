@@ -1,0 +1,38 @@
+<view class="user-config">
+  <image src="{{ userImagePath }}" class="item-img" />
+
+  <van-divider />
+
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+    <view class="section">
+      <view class="section-title">性别</view>
+      <radio-group name="sex" bindchange="sexchange">
+        <label style="margin-right: 30rpx;">
+          <radio value="man" checked="{{user.sex == 1?'true':'false'}}"/>男生</label>
+        <label>
+          <radio value="woman" checked="{{user.sex == 0?'true':'false'}}"/>女生</label>
+      </radio-group>
+    </view>
+
+    <view class="section">
+      <view class="section-title">学校</view>
+      <input class="section-input" name="school" placeholder="please input here" value="{{user.schoolName}}" bindinput="schoolchange"/>
+    </view>
+
+    <view class="section">
+      <view class="section-title">意愿岗位</view>
+      <input class="section-input" name="want" placeholder="please input here" value="{{user.wishJob}}" bindinput="wishjobchange"/>
+    </view>
+
+    <view class="section">
+      <view class="section-title">联系方式</view>
+      <input class="section-input" name="contact" placeholder="please input here" value="{{user.phoneNum}}" bindinput="phonenumchange"/>
+    </view>
+
+    <view class="btn-area">
+      <button formType="submit" >修改信息</button>
+      <!-- <button formType="reset">Reset</button> -->
+    </view>
+  </form>
+</view>

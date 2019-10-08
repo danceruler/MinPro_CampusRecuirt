@@ -1,16 +1,16 @@
 <!--components/user/user-info/index.wxml-->
-<view class="user-info">
+<view class="user-info" bindtap="config">
   <view class="line" />
   <image src="{{ userAvaterPath }}" class="user-avater" />
   <view class="user-detail">
     <text class="user-name">{{ userName }}</text>
     <view class="user-attr">
       <image class="icon" src="{{ schoolIconPath }}" />
-      <text class="user-attr-text">清华大学 MIT</text>
+      <text class="user-attr-text">{{ schoolName }}</text>
     </view>
     <view class="user-attr">
       <image class="icon" src="{{ positionIconPath }}" />
-      <text class="user-attr-text">算法 后端 前端</text>
+      <text class="user-attr-text">{{ wishJob }}</text>
     </view>
   </view>
   <view class="user-buttons">

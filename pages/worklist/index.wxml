@@ -10,15 +10,36 @@
     bind:clear="onClear"
   />
   <view class="{{ scrollTop > 120?'topnavFixed':'topnavAbsolute' }}" >
-    <image class="condition_ico" src="../../image/ico/筛选/筛选.png" bind:tap="selectCondition"></image>
-    <text bind:tap="selectCondition" style='margin-right:3rpx'>筛选</text>
-    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.type == ''?'display:none':'display:block'}}">{{condition.type}}</button>
-    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.cityName == ''?'display:none':'display:block'}}">{{condition.cityName}}</button>
-    <button disabled='disabled' class="mini-btn" type="default" size="mini" style="{{condition.isExistsIntroCode ==  -1?'display:none':'display:block'}}">{{condition.isExistsIntroCode==1?'有内推码':'无内推码'}}</button>
 
+    <view bind:tap="selectCondition" class="icon-button" >
+      <image class="condition_ico" src="../../image/ico/筛选/筛选.png" />
+      <text style='margin-right:3rpx; text-align:center;'>筛选</text>
+    </view>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" 
+            style="{{condition.type == ''?'display:none':'display:block'}}">
+      {{condition.type}}
+    </button>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" 
+            style="{{condition.cityName == ''?'display:none':'display:block'}}">
+      {{condition.cityName}}
+    </button>
+    <button disabled='disabled' class="mini-btn" type="default" size="mini" 
+            style="{{condition.isExistsIntroCode ==  -1?'display:none':'display:block'}}">
+      {{condition.isExistsIntroCode==1?'有内推码':'无内推码'}}
+    </button>
+    <view bind:tap="clearCondition" class="icon-button" style="margin-left: 10rpx;" >
+      <text style='margin-right:3rpx; text-align:center;'>清除</text>
+    </view>
   </view>
+
+  <view class="fixedNewWork" bindtap="openNewWork">
+    <image src="/image/new.png" style="width: 80rpx; height: 80rpx;" />
+  </view>
+
   <view class='recruitList'>
-    <view wx:for="{{list}}" wx:key="unique" >
+    <work-list data="{{ list }}" />
+    <!-- <view wx:for="{{list}}" wx:key="unique" >
+>>>>>>> dev
       <recruitListItem
         num="2"
         tag="标签"
@@ -32,8 +53,12 @@
         bind:tap="onClickItem"
       >
       </recruitListItem>
+<<<<<<< HEAD
     </view>
     <text class="{{ isNoMoreData == 1?'bottonTip_show':'bottonTip_hide' }}">没有数据了哦</text>
+=======
+    </view> -->
+    <text class="{{ isNoMoreData == 1?'bottonTip_show':'bottonTip_hide' }}" style="margin-top: 30rpx;">没有数据了哦</text>
   </view>
 </view>
 

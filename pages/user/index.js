@@ -29,6 +29,9 @@ Page({
         selected: 2
       })
     }
+    this.setData({
+      user: app.globalData.userInfo
+    })
   },
   data:{
     isLogin:0,

@@ -21,10 +21,19 @@ const strToDate = str =>{
   var timeArr = str.split("T")
   var d = timeArr[0].split("-")
   var t = timeArr[1].split(":")
-  return new Date(d[0], d[1]-1, d[2], t[0], t[1], t[2])
+  return new Date(d[0], d[1]-1, d[2], t[0], t[1], t[2].split('Z')[0])
+}
+
+const strToDateStr = str => {
+  str = str.substring(0, 24)
+  var timeArr = str.split("T")
+  var d = timeArr[0].split("-")
+  var t = timeArr[1].split(":")
+  return d[0] + '-' + d[1]  + '-' + d[2] + ' ' + t[0] + ':' + t[1] + ':' + t[2].split('Z')[0]
 }
 
 module.exports = {
   formatTime: formatTime,
-  formatstrToDate: strToDate
+  formatstrToDate: strToDate,
+  formatstrToDateStr: strToDateStr
 }

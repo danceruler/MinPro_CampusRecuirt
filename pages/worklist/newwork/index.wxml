@@ -1,0 +1,64 @@
+<view class="work-publish">
+
+  <form bindsubmit="formSubmit" bindreset="formReset">
+
+
+    <view class="section">
+      <view class="section-title">公司名称</view>
+      <input class="section-input" name="companyName" placeholder="点击选择公司" disabled="true" bindtap="chooseCompany"/>
+    </view>
+
+    <view class="section">
+      <view class="section-title">职位名称</view>
+      <input class="section-input" name="positionName" placeholder="please input here" />
+    </view>
+
+    <view class="section">
+      <view class="section-title">职位类型</view>
+      <picker 
+      bindchange="bindTypeChange" 
+      name="positionType" 
+      value="{{ typeindex }}" 
+      range="{{ positiontypes }}"
+      range-key="name">
+        <view class="picker">
+          当前选择：{{ positiontypes[typeindex].name }}
+        </view>
+      </picker>
+    </view>
+
+    <view class="section">
+      <view class="section-title">城市</view>
+      <picker 
+      bindchange="bindCityChange" 
+      name="city" 
+      value="{{ cityindex }}"
+      range="{{ cities }}"
+      range-key="name">
+        <view class="picker">
+          当前选择：{{ cities[cityindex].name }}
+        </view>
+      </picker>
+    </view>
+
+    <view class="section">
+      <view class="section-title">招聘官网</view>
+      <input class="section-input" name="webcite" placeholder="please input here" />
+    </view>
+
+    <view class="section">
+      <view class="section-title">内推码</view>
+      <input class="section-input" name="innercode" placeholder="please input here" />
+    </view>
+
+    <view class="section">
+      <view class="section-title">职位描述</view>
+      <textarea name="positionDes" placeholder="这个只有在按钮点击的时候才聚焦" auto-focus /> 
+    </view>
+
+    <view class="btn-area">
+      <button formType="submit" style="margin-bottom: 20rpx">Submit</button>
+      <button formType="reset">Reset</button>
+    </view>
+  </form>
+</view>

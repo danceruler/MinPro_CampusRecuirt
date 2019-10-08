@@ -1,0 +1,25 @@
+<!--components/worklist/work-item/index.wxml-->
+<view class="item" bindtap="onclick" data-data="{{ data }}">
+  <image src="{{ data.companyImg }}" class="item-img" />
+  <view class="item-basic-info">
+    <text class="text-name" style="margin-left: 20rpx;margin-bottom: 20rpx;">{{ data.jobName }}</text>
+    <text class="text-sub"  style="margin-left: 20rpx;margin-bottom: 15rpx;">{{ data.companyName }}</text>
+    <view class="text-icon" style="margin-bottom: 10rpx;">
+      <view class="text-icon">
+        <van-icon name="location-o" class="icon" />
+        <text class="text-sub">{{ data.city }}</text>
+      </view>
+      <view class="text-icon">
+        <van-icon name="clock-o" class="icon" />
+        <text class="text-sub">{{ data.jobTypes }}</text>
+      </view>
+    </view>
+  </view>
+  <view class="item-other-info">
+    <view class="text-icon">
+      <van-icon name="info-o" class="icon" />
+      <text class="text-sub">{{ data.jobDescription }}</text>
+    </view>
+    <text class="text-sub" style="text-align:center;">{{ data.createTime }}</text>
+  </view>
+</view>

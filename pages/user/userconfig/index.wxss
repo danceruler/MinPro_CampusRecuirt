@@ -1,0 +1,28 @@
+/* pages/userconfig/index.wxss */
+.user-config {
+  display: flex;
+  width: 750rpx;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section {
+  width: 700rpx;
+  margin: 10rpx auto;
+}
+
+.section-title {
+  color: silver;
+  margin: 5rpx;
+}
+
+.section-input {
+  color: #000;
+  border-bottom: 1px solid silver;
+}
+
+.item-img {
+  width: 250rpx;
+  height: 250rpx;
+  border-radius: 30rpx;
+}

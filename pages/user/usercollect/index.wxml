@@ -1,0 +1,3 @@
+<!--pages/usercollect/index.wxml-->
+<worklist data="{{ worklist }}">
+</worklist>

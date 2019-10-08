@@ -94,12 +94,13 @@ Page({
         success: function (result) {
           result = JSON.parse(result.data)
           for (var index in result.jobs) {
+            result.jobs[index].createTime = util.formatstrToDateStr(result.jobs[index].createTime)
             var indexString = 'list[' + that.data.list.length + ']'
             that.setData({
               [indexString]: result.jobs[index]
             })
           }
-
+          console.log(that.data.list) // 对应数据填补去work-item里面的wxml调
           that.setData({
             page:that.data.page+1,
             maxTime: result.minTime
@@ -130,6 +131,18 @@ Page({
       url: 'codition/condition?conditionStr=' + conditionStr,
     })
   },
+  clearCondition: function(){
+    this.setData({
+      condition: {
+        key: "",
+        type: "",
+        city: -1,
+        cityName: "",
+        isExistsIntroCode: -1
+      },
+    })
+    this.onSearch()
+  },
   //页面事件
   onPageScroll: function (e) {//监听页面滚动
     //上滑
@@ -155,5 +168,12 @@ Page({
   },
   onReachBottom:function(){
     this.getMoreList(1)
+  },
+
+  openNewWork: function() {
+    wx:wx.navigateTo({
+      url: 'newwork/index',
+    })
   }
+
 })
