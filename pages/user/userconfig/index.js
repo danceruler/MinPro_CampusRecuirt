@@ -7,8 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userImagePath: "/image/user.png",
-    user:null
+    userImagePath: "/image/user.png"
   },
 
   onLoad: function() {

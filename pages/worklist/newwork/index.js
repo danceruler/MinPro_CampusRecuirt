@@ -63,6 +63,8 @@ Page({
       url: 'choosecompany/index',
     })
   },
+
+
   bindTypeChange: function(e) {
     this.setData({
       typeindex: e.detail.value

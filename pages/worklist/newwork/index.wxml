@@ -2,10 +2,9 @@
 
   <form bindsubmit="formSubmit" bindreset="formReset">
 
-
     <view class="section">
       <view class="section-title">公司名称</view>
-      <input class="section-input" name="companyName" placeholder="点击选择公司" disabled="true" bindtap="chooseCompany"/>
+      <input class="section-input" name="companyName" placeholder="please input here" bindtap="chooseCompany"/>
     </view>
 
     <view class="section">
