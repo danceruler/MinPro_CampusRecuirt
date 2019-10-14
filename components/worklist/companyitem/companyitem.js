@@ -5,7 +5,7 @@ Component({
    */
   properties: {
     companyId:{
-      type:Intl,
+      type: String,
       value:0
     },
     imgUrl: {

@@ -5,14 +5,15 @@
 	},
 	"setting": {
 		"urlCheck": true,
-		"es6": true,
+		"es6": false,
+		"enhance": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
-		"coverView": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
 		"babelSetting": {
@@ -20,7 +21,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"enhance": true
+		"bundle": true
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.2",

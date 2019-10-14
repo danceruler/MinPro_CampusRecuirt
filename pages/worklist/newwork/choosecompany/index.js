@@ -22,10 +22,14 @@ Page({
     }
   },
 
+  onLoad(){
+    this.onSearch()
+  },
   onSearch(){
     var that = this
     that.setData({
-      list:[]
+      myList:[],
+      allList:[]
     })
     var data = {
       "key": this.data.key,
@@ -138,6 +142,12 @@ Page({
       "userId": app.globalData.userInfo.id,
       "requestTime": util.formatTime(new Date()),
       "secret": app.createSecret()
+    }
+    if (requestData.name == '' || requestData.headUrl.indexOf("https://wxlogin.820803") == -1){
+      wx.showToast({
+        title: '公司名或图片没有填写',
+      })
+      return
     }
     wx.showLoading({
       title: '正在添加公司信息',
