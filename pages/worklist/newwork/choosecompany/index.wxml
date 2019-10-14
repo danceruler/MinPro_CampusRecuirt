@@ -9,16 +9,37 @@
     bind:cancel="onCancel"
     bind:clear="onClear"
   />
+  <button bindtap="showDialog" class="showDialog">添加公司</button>
+  <text wx:if="{{myList.length>0}}">您添加的公司</text>
   <view wx:for="{{ myList }}"  wx:key="id">
     <listitem
+      companyId="{{item.id}}"
       imgUrl="{{item.headUrl}}"
       companyName="{{ item.name }}"
     />
   </view>
+  <text wx:if="{{allList.length>0}}">公司列表</text>
   <view wx:for="{{ allList }}"  wx:key="id">
     <listitem
+      companyId="{{item.id}}"
       imgUrl="{{item.headUrl}}"
       companyName="{{ item.name }}"
     />
+  </view>
+
+</view>
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+  <view class="zan-dialog__mask" bindtap="toggleDialog" />
+  <view class="zan-dialog__container" style="display:{{ showDialog ? 'block' : 'none' }}">
+    <view style="align-items: right;display: flex;justify-content: right;">
+      <image class="closeico" src="{{icons.close}}" bindtap="closeDialog"></image>
+    </view>
+    <view style="align-items: center;display: flex;justify-content: center;">
+      <image class="container_item" id="companyImg" src="{{addCompany.imgUrl ==''?icons.upload:addCompany.imgUrl}}" bindtap="uploadImg"></image>
+      <van-cell-group>
+        <van-field id="addCompanyName" v-model="value" placeholder="请输入公司名"/>
+      </van-cell-group>
+    </view>
+    <button class="addCompany-btn" bindtap="addCompany">添加公司</button>
   </view>
 </view>

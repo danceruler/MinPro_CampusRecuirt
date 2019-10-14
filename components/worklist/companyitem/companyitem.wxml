@@ -1,5 +1,7 @@
 <!--components/worklist/companyitem/companyitem.wxml-->
-<view>
-<image src="{{imgUrl}}"></image>
-<text>{{companyName}}</text>
+<view class="div"  bindtap="onclickItem">
+  <image class="img" src="{{imgUrl}}"></image>
+  <view class="name">
+    {{companyName}}
+  </view>
 </view>

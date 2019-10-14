@@ -73,8 +73,10 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    console.log(this.createSecret())
   },
   onShow:function(){
+
   },
   myLogin: function (obj) {
     var that = this
@@ -95,7 +97,7 @@ App({
                 }else{
                   that.globalData.isLogin = 1
                   that.globalData.userInfo = JSON.parse(data.data).user
-                 
+                  
                   obj.setData({ isLogin: 1, user: JSON.parse(data.data).user }) 
                   return JSON.parse(data.data).user
                 }

@@ -10,63 +10,16 @@ Page({
   data: {
     key:'',
     myList:[],
-    allList:[]
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    allList:[],
+    showDialog: false,
+    icons:{
+      close: '../../../../image/ico/close/close(1).png',
+      upload:'../../../../image/ico/upload/upload(1).png'
+    },
+    addCompany:{
+      name:'',
+      imgUrl:''
+    }
   },
 
   onSearch(){
@@ -78,8 +31,8 @@ Page({
       "key": this.data.key,
       "page": 1,
       "count": 100,
-      "uid": app.globalData.uid,
-      "userId": app.globalData.id,
+      "uid": app.globalData.userInfo.uid,
+      "userId": app.globalData.userInfo.id,
       "requestTime": util.formatTime(new Date()),
       "secret": app.createSecret(),
     }
@@ -107,8 +60,109 @@ Page({
             [indexString]: result.resultCompanies[index]
           })
         }
+        
         wx.hideLoading()
       }
     })
+  },
+
+  onClickItem(id){
+    console.log(id)
+  },
+  showDialog(){
+    this.setData({
+      showDialog: true
+    });
+  },
+  closeDialog(){
+    this.setData({
+      showDialog: false
+    });
+  },
+  uploadImg(){
+    var that = this
+    var FSM = wx.getFileSystemManager()
+    wx.chooseImage({
+      success: function(res) {
+        if (res.errMsg == "chooseImage:ok"){
+          var tempAddCompany = that.data.addCompany
+          FSM.readFile({
+            filePath: res.tempFilePaths[0],
+            encoding: "base64",
+            success: function (data) {
+              var uploadData = {
+                "imgBase64Str": data.data,
+                "uid": app.globalData.userInfo.uid,
+                "userId": app.globalData.userInfo.id,
+                "requestTime": util.formatTime(new Date()),
+                "secret": app.createSecret(),
+              }
+              wx.showLoading({
+                title: '图片上传中',
+                mask:true
+              })
+              wx.request({
+                url: Apis.Urls.UploadCompanyImg,
+                method:'post',
+                dataType: "application/json",
+                data: uploadData,
+                success: function (result){
+                  result = JSON.parse(result.data)
+                  console.log(result)
+                  if(result.State == 0){
+                    wx.showToast({
+                      title: result.Message,
+                    })
+                  }else{
+                    tempAddCompany.imgUrl = result.Message
+                    that.setData({
+                      addCompany: tempAddCompany
+                    })
+                  }
+                  wx.hideLoading()
+                }
+              })
+            }
+          })
+        }
+      },
+    })
+  },
+  addCompany(){
+    var that = this
+    var requestData = {
+      "name": this.selectComponent("#addCompanyName").__data__.value,
+      "description": "",
+      "headUrl": that.data.addCompany.imgUrl,
+      "uid": app.globalData.userInfo.uid,
+      "userId": app.globalData.userInfo.id,
+      "requestTime": util.formatTime(new Date()),
+      "secret": app.createSecret()
+    }
+    wx.showLoading({
+      title: '正在添加公司信息',
+      mask:true
+    })
+    wx.request({
+      url: Apis.Urls.AddCompany,
+      method: 'post',
+      data: requestData,
+      dataType: 'application/json',
+      success: function (result) {
+        result = JSON.parse(result.data)
+        if(result.State == 0){
+          wx.showToast({
+            title: result.Message,
+          })
+        }else{
+          that.backPage()
+        }
+        wx.hideLoading()
+      }
+    })
+  },
+  backPage(){
+    this.closeDialog()
+    this.onSearch()
   }
 })

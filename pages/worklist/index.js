@@ -23,7 +23,7 @@ Page({
     isUpSliding: 0,
     isDownSliding: 0,
     icons:{
-      condition:'../../image/ico/筛选/筛选.png'
+      condition:'../../../image/ico/筛选/筛选.png'
     }
   },
   onLoad: function () {

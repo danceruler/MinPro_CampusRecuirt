@@ -8,10 +8,10 @@
       wishJob="{{user.wishJob}}"
     />
   </view>
-  <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击登录</button>
-  <user-buttons />
+  <!-- <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">点击登录</button> -->
+  <!-- <user-buttons /> -->
   
-  <van-cell title="展示弹出层" is-link bind:click="showBasic" />
+  <!-- <van-cell title="展示弹出层" is-link bind:click="showBasic" />
   <van-popup
     show="{{ show.basic }}"
     custom-style="padding: 16px 16px 160px"
@@ -23,9 +23,9 @@
   <van-cell title="顶部弹出" is-link bind:click="showTop" />
   <van-cell title="底部弹出" is-link bind:click="showBottom" />
   <van-cell title="左侧弹出" is-link bind:click="showLeft" />
-  <van-cell title="右侧弹出" is-link bind:click="showRight" />
+  <van-cell title="右侧弹出" is-link bind:click="showRight" /> -->
 
-  <van-popup
+  <!-- <van-popup
     show="{{ show.top }}"
     position="top"
     custom-style="height: 20%"
@@ -60,9 +60,9 @@
     bind:input="onInput"
   />
 </demo-block>
-<van-toast id="van-toast" />
-  <user-info wx:if="{{ isLogin == 1 }}"/>
-  <van-button icon="contact" type="primary" wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo" custom-style="width: 400rpx;" style="margin: 20rpx auto;">
+<van-toast id="van-toast" /> -->
+  <!-- <user-info wx:if="{{ isLogin == 1 }}"/> -->
+  <van-button icon="contact" type="primary" wx:else open-type="getUserInfo" bindtap="getUserInfo" custom-style="width: 400rpx;" style="margin: 20rpx auto;">
   点击登录
   </van-button>
   <user-buttons />

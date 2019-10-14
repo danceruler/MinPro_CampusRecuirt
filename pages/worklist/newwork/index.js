@@ -1,7 +1,7 @@
 // pages/worklist/newwork/index.js
 var app = getApp()
 const util = require('../../../utils/util.js')
-
+const Apis = require('../../../utils/api.js')
 Page({
 
   /**
@@ -9,54 +9,128 @@ Page({
    */
   data: {
     positiontypes: [
-      { id: 0, name: '产品' },
-      { id: 1, name: '技术' },
-      { id: 2, name: '运营' },
-      { id: 3, name: '设计' },
-      { id: 4, name: '市场' },
-      { id: 5, name: '职能' },
+      {
+        id: 1,
+        name: "产品"
+      },
+      {
+        id: 2,
+        name: "技术"
+      },
+      {
+        id: 3,
+        name: "运营"
+      },
+      {
+        id: 4,
+        name: "设计"
+      },
+      {
+        id: 5,
+        name: "市场"
+      },
+      {
+        id: 6,
+        name: "职能"
+      }
     ],
     cities: [
-      { id: 0, name: '北京' },
-      { id: 1, name: '上海' },
-      { id: 2, name: '广州' },
-      { id: 3, name: '深圳' },
-      { id: 4, name: '杭州' },
-      { id: 5, name: '其他' },
+      {
+        id: 1,
+        name: "北京"
+      },
+      {
+        id: 2,
+        name: "上海"
+      },
+      {
+        id: 3,
+        name: "深圳"
+      },
+      {
+        id: 4,
+        name: "广州"
+      },
+      {
+        id: 5,
+        name: "杭州"
+      },
+      {
+        id: 6,
+        name: "其它"
+      }
     ],
-    typeindex: 0,
-    cityindex: 0,
-    "companyName": "sample string 1",
-    "companyId": 2,
-    "jobName": "sample string 3",
-    "jobTypes": "sample string 4",
-    "cityId": 5,
-    "officialWeb": "sample string 6",
-    "isExistsIntroCode": 7,
-    "IntroCode": "sample string 8",
-    "jobDescription": "sample string 9",
+    typeindex: 1,
+    cityindex: 1,
+    "companyName": "",
+    "companyId": 0,
+    "jobName": "",
+    "jobTypes": "",
+    "cityId": 0,
+    "officialWeb": "",
+    "isExistsIntroCode": 0,
+    "IntroCode": "",
+    "jobDescription": "",
+  },
+
+  onShow:function(){
+    console.log(this.data)
   },
 
   formSubmit: function (e) {
-    var data = {
-      "companyName": "sample string 1",
-      "companyId": 2,
-      "jobName": "sample string 3",
-      "jobTypes": "sample string 4",
-      "cityId": 5,
-      "officialWeb": "sample string 6",
-      "isExistsIntroCode": 7,
-      "IntroCode": "sample string 8",
-      "jobDescription": "sample string 9",
+    var that = this
+    var requestData = {
+      "companyName": that.data.companyName,
+      "companyId": that.data.companyId,
+      "jobName": that.data.jobName,
+      "jobTypes": that.data.typeindex > 0 ? that.data.positiontypes[that.data.typeindex].name:'',
+      "cityId": that.data.cityindex > 0 ? that.data.cities[that.data.cityindex].id : 0,
+      "officialWeb": that.data.officialWeb,
+      "isExistsIntroCode": that.data.IntroCode==''?0:1,
+      "IntroCode": that.data.IntroCode,
+      "jobDescription": that.data.jobDescription,
       "uid": app.globalData.userInfo.uid,
       "userId": app.globalData.userInfo.id,
       "requestTime": util.formatTime(new Date()),
       "secret": app.createSecret(),
     }
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
+    if (requestData.companyId == 0){
+      return this.errorToast("未选择公司")
+    }
+    if (requestData.jobName == '') {
+      return this.errorToast("未填写工作名称")
+    }
+    if (requestData.jobDescription == '') {
+      return this.errorToast("未填写工作名称描述")
+    }
+    wx.showLoading({
+      title: '正在提交',
+      mask:true
+    })
+    wx.request({
+      url: Apis.Urls.PublishRecruit,
+      method: 'post',
+      data: requestData,
+      dataType: 'application/json',
+      success: function (result) {
+        result = JSON.parse(result.data)
+        if (result.State == 0){
+          wx.showToast({
+            title: result.Message,
+          })
+        }else{
+          wx.navigateBack({
+            
+          })
+          wx.showToast({
+            title: '上传成功',
+          })
+        }
+        wx.hideLoading()
+      }
+    })
   },
   formReset: function () {
-    console.log('form发生了reset事件')
   },
   chooseCompany:function(){
     wx.navigateTo({
@@ -66,6 +140,7 @@ Page({
 
 
   bindTypeChange: function(e) {
+    console.log(e.detail)
     this.setData({
       typeindex: e.detail.value
     })
@@ -75,4 +150,29 @@ Page({
       cityindex: e.detail.value
     })
   },
+  positionNameChange:function(e){
+    this.setData({
+      jobName: e.detail.value
+    })
+  },
+  officialWebChange: function (e) {
+    this.setData({
+      officialWeb: e.detail.value
+    })
+  }, 
+  IntroCodeChange: function (e) {
+    this.setData({
+      IntroCode: e.detail.value
+    })
+  },
+  jobDescriptionChange: function (e) {
+    this.setData({
+      jobDescription: e.detail.value
+    })
+  },
+  errorToast(msg){
+    wx.showToast({
+      title: msg,
+    })
+  }
 })

@@ -4,12 +4,12 @@
 
     <view class="section">
       <view class="section-title">公司名称</view>
-      <input class="section-input" name="companyName" placeholder="please input here" bindtap="chooseCompany"/>
+      <input class="section-input" name="companyName" placeholder="点击选择公司" value="{{companyName}}" disabled="true" bindtap="chooseCompany"/>
     </view>
 
     <view class="section">
       <view class="section-title">职位名称</view>
-      <input class="section-input" name="positionName" placeholder="please input here" />
+      <input class="section-input" name="positionName" bindinput="positionNameChange"  placeholder="please input here" />
     </view>
 
     <view class="section">
@@ -42,17 +42,17 @@
 
     <view class="section">
       <view class="section-title">招聘官网</view>
-      <input class="section-input" name="webcite" placeholder="please input here" />
+      <input class="section-input" name="webcite" bindinput="officialWebChange" placeholder="please input here" />
     </view>
 
     <view class="section">
       <view class="section-title">内推码</view>
-      <input class="section-input" name="innercode" placeholder="please input here" />
+      <input class="section-input" name="innercode" bindinput="IntroCodeChange" placeholder="please input here" />
     </view>
 
     <view class="section">
       <view class="section-title">职位描述</view>
-      <textarea name="positionDes" placeholder="这个只有在按钮点击的时候才聚焦" auto-focus /> 
+      <textarea name="positionDes" placeholder="这个只有在按钮点击的时候才聚焦" bindinput="jobDescriptionChange" auto-focus /> 
     </view>
 
     <view class="btn-area">

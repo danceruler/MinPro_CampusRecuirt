@@ -1,1 +1,63 @@
-/* pages/worklist/newwork/choosecompany/index.wxss */
+.zan-dialog__mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0);
+  display: none;
+}
+
+.zan-dialog__container {
+  position: fixed;
+  top: 20%;
+  width: 550rpx;
+  height: auto;
+  margin-left: 100rpx;
+  background: #f8f8f8;
+  transform: translateY(300%);
+  transition: all 0.4s ease;
+  z-index: 12;
+  border-radius: 20rpx;
+  box-shadow: 0px 3px 3px 2px gainsboro;
+}
+
+
+
+.container_item{
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 0rpx;
+}
+
+.zan-dialog--show .zan-dialog__container {
+  transform: translateY(0);
+}
+
+.zan-dialog--show .zan-dialog__mask {
+  display: block;
+}
+/* 
+page{
+  width: 100%
+} */
+
+.showDialog{
+  text-align: center;
+  background-color: gainsboro;
+  width: 100%;
+  height: 50rpx;
+  font-size: 20rpx
+}
+
+.closeico{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 0rpx;
+}
+
+.addCompany-btn{
+  width: 100%;
+  height: 80rpx;
+}
