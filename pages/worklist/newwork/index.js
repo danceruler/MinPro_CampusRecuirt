@@ -84,6 +84,7 @@ Page({
       "companyId": that.data.companyId,
       "jobName": that.data.jobName,
       "jobTypes": that.data.typeindex > 0 ? that.data.positiontypes[that.data.typeindex].name:'',
+      "city": that.data.cityindex > 0 ? that.data.cities[that.data.cityindex].name : '',
       "cityId": that.data.cityindex > 0 ? that.data.cities[that.data.cityindex].id : 0,
       "officialWeb": that.data.officialWeb,
       "isExistsIntroCode": that.data.IntroCode==''?0:1,
@@ -94,6 +95,7 @@ Page({
       "requestTime": util.formatTime(new Date()),
       "secret": app.createSecret(),
     }
+    console.log(requestData)
     if (requestData.companyId == 0){
       return this.errorToast("未选择公司")
     }

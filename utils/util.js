@@ -26,6 +26,7 @@ const strToDate = str =>{
 
 const strToDateStr = str => {
   str = str.substring(0, 24)
+  console.log(str)
   var timeArr = str.split("T")
   var d = timeArr[0].split("-")
   var t = timeArr[1].split(":")

@@ -143,9 +143,11 @@ Page({
       "requestTime": util.formatTime(new Date()),
       "secret": app.createSecret()
     }
-    if (requestData.name == '' || requestData.headUrl.indexOf("https://wxlogin.820803") == -1){
+    console.log(requestData)
+    if (requestData.name == '' || requestData.headUrl.indexOf("https://wxloginapi.820803") == -1){
       wx.showToast({
         title: '公司名或图片没有填写',
+        
       })
       return
     }

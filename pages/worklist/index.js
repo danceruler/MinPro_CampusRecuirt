@@ -23,12 +23,11 @@ Page({
     isUpSliding: 0,
     isDownSliding: 0,
     icons:{
-      condition:'../../../image/ico/筛选/筛选.png'
+      condition:'/image/ico/shaixuan/shaixuan.png'
     }
   },
   onLoad: function () {
     this.getMoreList()
-    console.log(this.data.icons)
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
@@ -123,7 +122,6 @@ Page({
     }
   },
   onClickItem:function(e){
-    console.log(e.currentTarget.dataset.id)
   },
   selectCondition:function(){
     var conditionStr = JSON.stringify(this.data.condition) 
@@ -171,9 +169,16 @@ Page({
   },
 
   openNewWork: function() {
-    wx:wx.navigateTo({
-      url: 'newwork/index',
-    })
+    if (app.globalData.userInfo.id == 0){
+      wx.showToast({
+        title: '请先授权登录',
+        icon: 'none',
+      })
+    }else{
+      wx: wx.navigateTo({
+        url: 'newwork/index',
+      })
+    }
   }
 
 })

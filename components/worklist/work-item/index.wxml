@@ -16,10 +16,10 @@
     </view>
   </view>
   <view class="item-other-info">
-    <view class="text-icon">
+    <!-- <view class="text-icon">
       <van-icon name="info-o" class="icon" />
-      <text class="text-sub">{{ data.jobDescription }}</text>
-    </view>
+      <text class="text-sub">{{ data.jobDescription.substring(0,20) }}</text>
+    </view> -->
     <text class="text-sub" style="text-align:center;">{{ data.createTime }}</text>
   </view>
 </view>

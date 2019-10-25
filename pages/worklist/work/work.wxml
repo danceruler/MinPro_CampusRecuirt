@@ -2,20 +2,20 @@
   <view class="work-col-info" style="width: 750rpx;">
     <view class="work-row-info" style="width: 100%; margin-bottom: 10rpx;">
       <text class="work-name">
-        Default
+        {{workInfo.jobName}}
       </text>
       <text class="work-conpany">
-        Tencent
+        {{workInfo.companyName}}
       </text>
     </view>
     <view class="work-row-info" style="margin-left: 20rpx;">
       <view class="work-row-info">
         <van-icon name="location-o" class="icon" />
-        <text class="work-sub-text" style="margin-left: 10rpx;"> City </text>
+        <text class="work-sub-text" style="margin-left: 10rpx;">{{workInfo.city}}</text>
       </view>
       <view class="work-row-info" style="margin-left: 20rpx;">
         <van-icon name="clock-o" class="icon" />
-        <text class="work-sub-text" style="margin-left: 10rpx;"> Time </text>
+        <text class="work-sub-text" style="margin-left: 10rpx;">{{workInfo.createTime}}</text>
       </view>
     </view>
   </view>
@@ -25,11 +25,11 @@
   <view class="work-col-info" style="width: 750rpx;">
     <view class="work-row-info" style="margin-left: 24rpx;margin-top: 10rpx;margin-bottom: 10rpx;">
       <text style="font-weight: bold;"> 校招官网 </text>
-      <text style="margin-left: 20rpx;"> https://hello.com </text>
+      <text style="margin-left: 20rpx;"> {{workInfo.officialWeb}} </text>
     </view>
     <view class="work-row-info" style="margin-left: 24rpx;margin-bottom: 10rpx;">
       <text style="font-weight: bold;"> 内推码 </text>
-      <text style="margin-left: 20rpx;"> 0000 </text>
+      <text style="margin-left: 20rpx;"> {{workInfo.IntroCode}} </text>
     </view>
   </view>
 
@@ -38,15 +38,16 @@
   <view class="work-rol-info" style="width: 720rpx; flex: 1;margin: auto 24rpx;margin-bottom: 52px;">
     <text style="font-weight: bold;font-size: 30rpx;margin-top: 10rpx;line-height: 30rpx;"> 职位描述 </text>
     <text>
-      {{ jobDes }}
+      {{ workInfo.jobDescription }}
     </text>
   </view>
 
   <van-goods-action style="border-top: 1px solid silver;">
-    <van-goods-action-icon icon="star-o" text="收藏" />
-    <van-goods-action-icon icon="share" text="分享" />
-    <van-goods-action-button color="#52c41a" text="复制内推码" />
-    <van-goods-action-button color="#13c2c2" text="复制网址" />
+    <van-goods-action-icon icon="star-o" style="display:{{isCollect == 1?'none':'block'}}" bindtap="collect" text="收藏" />
+    <van-goods-action-icon icon="star" style="display:{{isCollect == 0?'none':'block'}}" bindtap="collect" text="收藏" />
+    <van-goods-action-icon icon="share" open-type="share" text="分享" />
+    <van-goods-action-button color="#52c41a" bindtap="copyText" data-copytext='{{workInfo.IntroCode}}' style="display:{{workInfo.isExistsIntroCode == 0?'none':'block'}}" text="复制内推码" />
+    <van-goods-action-button color="#13c2c2" bindtap="copyText" data-copytext='{{workInfo.officialWeb}}' text="复制网址" />
   </van-goods-action>
 
 </view>

@@ -12,7 +12,7 @@
   <view class="{{ scrollTop > 120?'topnavFixed':'topnavAbsolute' }}" >
 
     <view bind:tap="selectCondition" class="icon-button" >
-      <image class="condition_ico" src="../../image/ico/筛选/筛选.png" />
+      <image class="condition_ico" src="{{icons.condition}}" />
       <text style='margin-right:3rpx; text-align:center;'>筛选</text>
     </view>
     <button disabled='disabled' class="mini-btn" type="default" size="mini" 

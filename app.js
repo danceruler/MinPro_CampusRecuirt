@@ -79,6 +79,7 @@ App({
 
   },
   myLogin: function (obj) {
+    
     var that = this
     wx.getUserInfo({
       success: function (res) {
@@ -94,6 +95,7 @@ App({
                 console.log(JSON.parse(data.data))
                 if(JSON.parse(data.data).State == 0){
                   that.myLogin(obj)
+                  wx.hideLoading()
                 }else{
                   that.globalData.isLogin = 1
                   that.globalData.userInfo = JSON.parse(data.data).user
@@ -101,6 +103,7 @@ App({
                   obj.setData({ isLogin: 1, user: JSON.parse(data.data).user }) 
                   return JSON.parse(data.data).user
                 }
+                
               },
               fail:function(){
                 that.myLogin(obj)
@@ -110,6 +113,7 @@ App({
         })
       }
     })
+    
   },
   createSecret:function(){
     var data = {
