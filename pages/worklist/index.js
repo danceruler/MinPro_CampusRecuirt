@@ -93,7 +93,7 @@ Page({
         success: function (result) {
           result = JSON.parse(result.data)
           for (var index in result.jobs) {
-            result.jobs[index].createTime = util.formatstrToDateStr(result.jobs[index].createTime)
+            result.jobs[index].createTime = util.formatstrToShortStr(result.jobs[index].createTime)+'发布'
             var indexString = 'list[' + that.data.list.length + ']'
             that.setData({
               [indexString]: result.jobs[index]
