@@ -7,7 +7,7 @@ App({
     userInfo: {
       uid: "",
       id: 0
-    },
+    }, 
     testApiDomain: 'http://localhost:60461/api/',
     myApiDomain: 'https://wxloginapi.820803.xyz/api/',
     isLogin: 0,
