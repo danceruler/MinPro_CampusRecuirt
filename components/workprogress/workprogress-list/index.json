@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "workprogress-item": "../workprogress-item/index"
+  }
+}

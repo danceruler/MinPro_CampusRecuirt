@@ -1,3 +1,19 @@
-<!--pages/workprogress/index.wxml-->
-<text>pages/workprogress/index.wxml</text>
-<button bindtap="testapi">测试同步使用方法</button>
+<view class="navbar">
+    <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>
+</view>
+
+ 
+<!--首页-->
+<view hidden="{{currentTab!==0}}" style="margin-top:70rpx">
+  <workprogress-list data="{{list}}"/>
+</view>
+ 
+<!--搜索-->
+<view hidden="{{currentTab!==1}}" style="margin-top:70rpx">
+  tab_02
+</view>
+ 
+<!--我-->
+<view hidden="{{currentTab!==2}}" style="margin-top:70rpx">
+  tab_03
+</view>

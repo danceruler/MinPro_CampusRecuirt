@@ -1,0 +1,7 @@
+/* components/workprogress/workprogress-list/index.wxss */
+.workprogress-list {
+  display: flex;
+  flex-direction: column;
+  width: 750rpx;
+}
+ 

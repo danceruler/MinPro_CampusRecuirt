@@ -14,7 +14,27 @@ Page({
     },
     page: 1,
     count: 10,
-    maxTime: "",
+    navbar: ['进行中', '拿offer', '已被拒'],
+    currentTab: 0,
+    scrollTop:0,
+    list:[
+      {
+        positionName:1
+      },{
+        positionName: 2
+      },{
+        positionName: 3
+      },{
+        positionName: 4
+      },{
+        positionName: 5
+      },{
+        positionName: 6
+      }
+    ]
+  },
+  onLoad: function () {
+    var that = this;
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
@@ -24,6 +44,18 @@ Page({
       })
     }
   },
+  navbarTap: function (e) {
+    this.setData({
+      currentTab: e.currentTarget.dataset.idx
+    })
+  },
+  //页面事件
+  onPageScroll: function (e) {//监听页面滚动
+    this.setData({
+      scrollTop: e.scrollTop
+    })
+  },
+
   async api() {
     let request = (time) => {
       return new Promise((resolve) => {

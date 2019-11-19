@@ -1,0 +1,9 @@
+<!--components/workprogress/workprogress-list/index.wxml-->
+<view class="workprogress-list">
+  <workprogress-item
+  wx:for="{{ data }}"
+  wx:for-item="item"
+  wx:key="positionName"
+  data="{{ item }}"
+  />
+</view>
