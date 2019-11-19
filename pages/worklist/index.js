@@ -85,6 +85,7 @@ Page({
         "requestTime": util.formatTime(new Date()),
         "secret": app.createSecret()
       }
+      console.log(data)
       wx.request({
         url: Apis.Urls.GetRecruits,
         data: data,

@@ -1,0 +1,6 @@
+<!-- 组件模板 -->
+<view class="mainview">
+<input class="searchinput"></input>
+<button class="searchbutton">button</button>
+</view>
+

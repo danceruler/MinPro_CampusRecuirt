@@ -1,0 +1,16 @@
+.mainview{
+  display:flex;
+  flex-direction:row;
+  width:700rpx;
+}
+
+.searchinput{
+  width: 50%;
+  height: 70rpx;
+  background-color: red
+}
+
+.searchbutton{
+  right: 20rpx;
+  height: 70rpx;
+}

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "workprogress-list": "/components/workprogress/workprogress-list/index"
+    "workprogress-list": "/components/workprogress/workprogress-list/index",
+    "searchbox":"/components/workprogress/searchbox/index"
   }
 }

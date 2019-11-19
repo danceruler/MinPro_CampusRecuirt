@@ -10,7 +10,10 @@ Page({
       type: "",
       city: -1,
       cityName: "",
-      isExistsIntroCode: -1
+      isExistsIntroCode: -1,
+      addflag: true,  //判断是否显示搜索框右侧部分
+      addimg: '../../image/ico/close/close.png',
+      searchstr: 'sadsad',
     },
     page: 1,
     count: 10,
