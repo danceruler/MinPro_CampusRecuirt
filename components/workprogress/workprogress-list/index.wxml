@@ -3,7 +3,7 @@
   <workprogress-item
   wx:for="{{ data }}"
   wx:for-item="item"
-  wx:key="positionName"
+  wx:key="updateTime"
   data="{{ item }}"
   />
 </view>

@@ -1,2 +1,2 @@
 <!--components/workprogress/workprogress-item/index.wxml-->
-<text>我是{{data.positionName}}</text>
+<text>我是{{data.jobName}}</text>

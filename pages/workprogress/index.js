@@ -37,7 +37,9 @@ Page({
     ]
   },
   onLoad: function () {
-    var that = this;
+    var that = this
+    this.loadDoingList()
+    //this.createInterview()
   },
   onShow: function () {
     if (typeof this.getTabBar === 'function' &&
@@ -61,27 +63,31 @@ Page({
   loadDoingList: function(){
     var that = this
     var requestDate = {
-      "page": doinglistPage,
+      "page": that.data.doinglistPage,
       "count": 10,
+      "state":1,
       "uid": app.globalData.userInfo.uid,
       "userId": app.globalData.userInfo.id,
       "requestTime": util.formatTime(new Date()),
       "secret": app.createSecret()
     }
+    
     wx.request({
       url: Apis.Urls.ListInterview,
       data: requestDate,
       method: 'post',
       dataType: "application/json",
       success: function (result) {
-        result = JSON.parse(result)
+        result = JSON.parse(result.data)
+        console.log(result.interviews)
         for (var index in result.interviews) {
           //result.interviews[index].createTime = util.formatstrToShortStr(result.interviews[index].createTime) + '发布'
           var indexString = 'doinglist[' + that.data.doinglist.length + ']'
           that.setData({
-            [indexString]: result.doinglist[index]
+            [indexString]: result.interviews[index]
           })
         }
+        console.log(that.data.doinglist)
         if (result.interviews.length < 10){
           that.data.isDoingListBottom = 1;
         }
@@ -97,7 +103,43 @@ Page({
   onReachBottom:function(){
     console.log(this.data.currentTab)
   },
-
+  createInterview:function(){
+    var requestDate = {
+      "interview": {
+        "id": 0,
+        "jobId": 30,
+        "companyName": "dota2",
+        "jobName": "dota2运营",
+        "state": 1,
+        "createTime": "",
+        "updateTime": "",
+        "companyId": 11,
+        "uid": app.globalData.userInfo.uid,
+      },
+      "interviewSteps": [
+        {
+          "id": 0,
+          "interviewId": 0,
+          "date": "2019-11-20T20:03:53.8404428+08:00",
+          "description": "test",
+          "createTime": ""
+        }
+      ],
+      "uid": app.globalData.userInfo.uid,
+      "userId": app.globalData.userInfo.id,
+      "requestTime": util.formatTime(new Date()),
+      "secret": app.createSecret()
+    }
+    wx.request({
+      url: Apis.Urls.CreateInterview,
+      data: requestDate,
+      method: 'post',
+      dataType: "application/json",
+      success: function (result) {
+        console.log(result.data)
+      }
+    })
+  },
 
 
 

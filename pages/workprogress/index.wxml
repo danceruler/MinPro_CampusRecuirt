@@ -13,7 +13,7 @@
  
 <!--首页-->
 <view hidden="{{currentTab!==0}}" style="margin-top:140rpx">
-  <workprogress-list data="{{list}}"/>
+  <workprogress-list data="{{doinglist}}"/>
 </view>
  
 <!--搜索-->
