@@ -20,20 +20,20 @@ Page({
     navbar: ['进行中', '拿offer', '已被拒'],
     currentTab: 0,
     scrollTop:0,
-    list:[
-      {
-        positionName:1
-      },{
-        positionName: 2
-      },{
-        positionName: 3
-      },{
-        positionName: 4
-      },{
-        positionName: 5
-      },{
-        positionName: 6
-      }
+    doinglistPage:1,
+    successlistPage:1,
+    faillistPage:1,
+    isDoingListBottom:0,
+    isSuccessListBottom: 0,
+    isFailListBottom: 0,
+    doinglist:[
+
+    ],
+    successlist:[
+
+    ],
+    faillist:[
+
     ]
   },
   onLoad: function () {
@@ -58,7 +58,59 @@ Page({
       scrollTop: e.scrollTop
     })
   },
+  loadDoingList: function(){
+    var that = this
+    var requestDate = {
+      "page": doinglistPage,
+      "count": 10,
+      "uid": app.globalData.userInfo.uid,
+      "userId": app.globalData.userInfo.id,
+      "requestTime": util.formatTime(new Date()),
+      "secret": app.createSecret()
+    }
+    wx.request({
+      url: Apis.Urls.ListInterview,
+      data: requestDate,
+      method: 'post',
+      dataType: "application/json",
+      success: function (result) {
+        result = JSON.parse(result)
+        for (var index in result.interviews) {
+          //result.interviews[index].createTime = util.formatstrToShortStr(result.interviews[index].createTime) + '发布'
+          var indexString = 'doinglist[' + that.data.doinglist.length + ']'
+          that.setData({
+            [indexString]: result.doinglist[index]
+          })
+        }
+        if (result.interviews.length < 10){
+          that.data.isDoingListBottom = 1;
+        }
+      }
+    })
+  },
+  loadSuccessList: function(){
 
+  },
+  loadFailList: function(){
+
+  },
+  onReachBottom:function(){
+    console.log(this.data.currentTab)
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //儿子的同步请求测试方法
   async api() {
     let request = (time) => {
       return new Promise((resolve) => {
