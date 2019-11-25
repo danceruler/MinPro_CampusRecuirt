@@ -1,2 +1,14 @@
 <!--components/workprogress/workprogress-item/index.wxml-->
-<text>我是{{data.jobName}}</text>
+<view class="item" bindtap="onclick" data-data="{{ data }}">
+  <view class="mainview">
+    <view class="leftview">
+      <text class="text-jobname">{{data.jobName}}</text>
+      <text class="text-companyname">{{data.companyName}}</text>
+    </view>
+    <view class="rightview"> 
+      <text class="text-date">日期</text>
+      <view>标签</view>
+    </view>
+  </view>
+  <text class="text-description">{{data.description == null?'无':data.description}}</text>
+</view>

@@ -79,7 +79,7 @@ Page({
       dataType: "application/json",
       success: function (result) {
         result = JSON.parse(result.data)
-        console.log(result.interviews)
+        console.log(result)
         for (var index in result.interviews) {
           //result.interviews[index].createTime = util.formatstrToShortStr(result.interviews[index].createTime) + '发布'
           var indexString = 'doinglist[' + that.data.doinglist.length + ']'
@@ -87,7 +87,7 @@ Page({
             [indexString]: result.interviews[index]
           })
         }
-        console.log(that.data.doinglist)
+        
         if (result.interviews.length < 10){
           that.data.isDoingListBottom = 1;
         }
