@@ -6,8 +6,10 @@
       <text class="text-companyname">{{data.companyName}}</text>
     </view>
     <view class="rightview"> 
-      <text class="text-date">日期</text>
-      <view>标签</view>
+      <text class="text-date">{{data.createTime}}</text>
+      <view class="view-state-{{data.state}}">
+        {{data.state == 1?'进行中':data.state == 0?'被拒绝':'已通过'}}
+      </view>
     </view>
   </view>
   <text class="text-description">{{data.description == null?'无':data.description}}</text>

@@ -1,4 +1,5 @@
 {
+  "enablePullDownRefresh":true,
   "usingComponents": {
     "workprogress-list": "/components/workprogress/workprogress-list/index",
     "searchbox":"/components/workprogress/searchbox/index"

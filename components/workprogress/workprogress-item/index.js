@@ -21,6 +21,9 @@ Component({
     onclick: function (e) {
       let edata = JSON.stringify(e.currentTarget.dataset.data)
       console.log(edata)
+      wx: wx.navigateTo({
+        url: '/pages/workprogress/detail/index',
+      })
     }
   }
 })

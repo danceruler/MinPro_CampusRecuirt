@@ -1,0 +1,41 @@
+/* pages/workprogress/detail/index.wxss */
+
+.stateview{
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.statetext{
+  font-size: 27rpx;
+  font-weight: 0.5rpx;
+  margin-left: 30rpx;
+  margin-top: 10rpx;
+}
+
+.statebtnview{
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+.btnview{
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: row-reverse;
+  margin-right: 20rpx;
+}
+
+.stepsview{
+  margin-left: 36%;
+}
+
+.btnview2{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dialogview{
+  width: 100%;
+  height: 500rpx;
+}

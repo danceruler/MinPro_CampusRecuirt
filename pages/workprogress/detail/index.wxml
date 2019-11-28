@@ -1,0 +1,63 @@
+<van-cell-group>
+  <van-cell title="公司名称" value="{{detail.interview.companyName}}" />
+  <van-cell title="职位名称" value="{{detail.interview.jobName}}" />
+  <!-- <van-cell title="职位名称" value="{{detail.interview.jobName}}" label="描述信息" border="{{ false }}" /> -->
+</van-cell-group>
+<view class="stateview">
+  <text class="statetext">当前状态</text>
+  <view class="statebtnview" wx:if="{{detail.interview.state == 1}}">
+    <van-button type="info" size="small" bind:click="changeState" data-state="1">进行中</van-button>
+    <van-button type="primary" size="small" bind:click="changeState" plain data-state="2">已通过</van-button>
+    <van-button type="danger" size="small" bind:click="changeState" plain data-state="0">已被拒</van-button>
+  </view>
+  <view class="statebtnview" wx:elif="{{detail.interview.state == 2}}">
+    <van-button type="info" size="small" bind:click="changeState" plain data-state="1">进行中</van-button>
+    <van-button type="primary" size="small" bind:click="changeState"  data-state="2">已通过</van-button>
+    <van-button type="danger" size="small" bind:click="changeState" plain data-state="0">已被拒</van-button>
+  </view>
+  <view class="statebtnview" wx:elif="{{detail.interview.state == 0}}">
+    <van-button type="info" size="small" bind:click="changeState" plain data-state="1">进行中</van-button>
+    <van-button type="primary" size="small" bind:click="changeState" plain data-state="2">已通过</van-button>
+    <van-button type="danger" size="small" bind:click="changeState" data-state="0">已被拒</van-button>
+  </view>
+  <view class="statebtnview" wx:else>
+    <van-button type="info" size="small" bind:click="changeState" plain data-state="1">进行中</van-button>
+    <van-button type="primary" size="small" bind:click="changeState" plain data-state="2">已通过</van-button>
+    <van-button type="danger" size="small" bind:click="changeState" plain data-state="0">已被拒</van-button>
+  </view>
+</view>
+<view class="btnview">
+ <van-button round type="primary" size="small"  bind:click="showCustomDialog">更新进度</van-button>
+  <van-dialog
+    use-slot
+    title="标题"
+    show="{{ show }}"
+    show-cancel-button
+    bind:close="onClose"
+    bind:confirm="addStep"
+  >
+  <view class="dialogview">
+
+  </view>
+        <!-- <image
+      class="demo-image"
+      src="https://img.yzcdn.cn/public_files/2017/09/05/4e3ea0898b1c2c416eec8c11c5360833.jpg"
+    /> -->
+  </van-dialog>
+ 
+</view>
+<van-divider contentPosition="center" customStyle="color:#32CD32;border-color:#32CD32;font-size: 18px;">当前进度</van-divider>
+<view class="stepsview">
+   <van-steps
+      steps="{{ steps }}"
+      active="{{ active }}"
+      direction="vertical"
+      active-color="#32CD32"
+    />
+</view>
+<view class="btnview2">
+  <van-button type="primary" plain >取消</van-button>
+  <van-button type="primary">保存</van-button>
+</view>
+
+
