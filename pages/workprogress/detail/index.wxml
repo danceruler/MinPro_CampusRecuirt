@@ -31,13 +31,32 @@
   <van-dialog
     use-slot
     title="标题"
+    confirmButtonText="添加"
+    title="添加进度"
     show="{{ show }}"
     show-cancel-button
     bind:close="onClose"
     bind:confirm="addStep"
   >
   <view class="dialogview">
-
+  <picker mode="date" value="{{date}}" start="2015-09-01" end="2022-09-01" bindchange="bindDateChange">
+      <van-field
+        value="{{date}}"
+        label="日期"
+        placeholder="请输入用户名"
+        bind:focus="showDatetimePicker"
+        disabled
+      />
+  </picker>
+     <van-cell-group>
+        <van-field
+          type="textarea"
+          label="描述"
+          value="{{description}}"
+          autosize
+          bind:change="chengeDescription"
+        />
+      </van-cell-group>
   </view>
         <!-- <image
       class="demo-image"
@@ -48,13 +67,16 @@
 </view>
 <van-divider contentPosition="center" customStyle="color:#32CD32;border-color:#32CD32;font-size: 18px;">当前进度</van-divider>
 <view class="stepsview">
+  <scroll-view class="stepscroll" scroll-y="true">
    <van-steps
       steps="{{ steps }}"
       active="{{ active }}"
       direction="vertical"
       active-color="#32CD32"
     />
+  </scroll-view>
 </view>
+<van-divider customStyle="color:#32CD32;border-color:#32CD32;"></van-divider>
 <view class="btnview2">
   <van-button type="primary" plain >取消</van-button>
   <van-button type="primary">保存</van-button>

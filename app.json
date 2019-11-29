@@ -14,7 +14,8 @@
     "pages/logs/logs",
     "pages/worklist/newwork/choosecompany/index",
     "pages/worklist/newwork/addcompany/index",
-    "pages/workprogress/detail/index"
+    "pages/workprogress/detail/index",
+    "pages/workprogress/create/index"
   ],
   "tabBar": {
     "custom": true,

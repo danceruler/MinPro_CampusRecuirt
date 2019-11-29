@@ -38,7 +38,7 @@ Page({
       ],
       "State": 1,
       "Message": "sample string 2"
-    }, 
+    },
     steps: [
       {
         text: '步骤一',
@@ -57,17 +57,17 @@ Page({
         desc: '描述信息'
       }
     ],
-    active:4,
-    show:false,
-    date:'',
-    description:''
+    active: 4,
+    show: false,
+    date: '',
+    description: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+
   },
 
   /**
@@ -119,7 +119,7 @@ Page({
 
   },
 
-  changeState(e){
+  changeState(e) {
     var detail = this.data.detail
     detail.interview.state = e.currentTarget.dataset.state
     this.setData({
@@ -128,11 +128,11 @@ Page({
     console.log(this.data.detail.interview.state)
   },
   //点击更新进度按钮
-  showCustomDialog(){
-    this.setData({ 
+  showCustomDialog() {
+    this.setData({
       show: true,
       date: util.formatTime(new Date()).substring(0, 10),
-      description:''
+      description: ''
     });
   },
   //关闭dialog
@@ -163,16 +163,16 @@ Page({
     steps[steps.length] = newpagestep
     var nowstepnum = steps.length
     that.setData({
-      detail:detail,
-      steps:steps,
+      detail: detail,
+      steps: steps,
       active: nowstepnum
     })
     console.log(that.data.detail)
   },
   //改变描述事件
-  chengeDescription(e){
+  chengeDescription(e) {
     this.setData({
-      description:e.detail
+      description: e.detail
     })
   },
   //日期选择器选择事件
