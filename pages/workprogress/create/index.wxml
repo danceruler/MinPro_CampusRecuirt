@@ -12,6 +12,7 @@
     value="{{ detail.interview.jobName }}"
     label="职位名称"
     border="{{ true }}"
+    bind:change="changeJobName"
     disabled="{{canchangejobinfo}}"
   />
   <van-button type="info" block bind:click="showPopup">从我的收藏中选择职位</van-button>

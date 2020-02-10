@@ -155,7 +155,7 @@ Page({
       detail: detail
     })
   },
-  changeJobName(){
+  changeJobName(e){
     var detail = this.data.detail
     detail.interview.jobName = e.detail
     this.setData({
@@ -266,8 +266,31 @@ Page({
             title: '保存成功',
           })
           //返回主页
+          var pages = getCurrentPages()
+          var prePage = pages[pages.length - 2]
+          var turnTab = 0
+          if (postData.interview.state == 2){
+            turnTab = 1
+          }
+          if (postData.interview.state == 0){
+            turnTab = 2
+          }
+          prePage.setData({
+            currentTab: turnTab,
+            doinglist:[],
+            successlist: [],
+            faillist: []
+          })
+          switch (turnTab){
+            case 0:
+              prePage.loadDoingList()
+            case 1:
+              prePage.loadSuccessList()
+            case 2:
+              prePage.loadFailList()
+          }
           wx.navigateBack({
-            
+
           })
 
         }else{
