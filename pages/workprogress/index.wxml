@@ -2,7 +2,7 @@
   <view class="searchview">
     <input class="searchinput" ></input>
     <image class="searchimage" style="margin-top:10rpx;" src="../../image/ico/search/search3.png"></image>
-    <image class="searchimage" src="../../image/ico/add/add2.png"></image>
+    <image class="searchimage" src="../../image/ico/add/add2.png" bindtap="addProgress"></image>
   </view>
   <view class="navbar">
       <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text>

@@ -10,64 +10,95 @@ Page({
   data: {
     detail: {
       "interview": {
-        "id": 1,
-        "jobId": 2,
-        "companyName": "sample string 3",
-        "jobName": "sample string 4",
-        "state": 5,
-        "createTime": "2019-11-28T15:38:35.6166762+08:00",
-        "updateTime": "2019-11-28T15:38:35.6166762+08:00",
+        "id": 0,
+        "jobId": 0,
+        "companyName": "",
+        "jobName": "",
+        "state": 1,
+        "createTime": "",
+        "updateTime": "",
         "companyId": 1,
-        "uid": "sample string 6"
+        "uid": "",
       },
       "interviewSteps": [
-        {
-          "id": 1,
-          "interviewId": 1,
-          "date": "2019-11-28T15:38:35.6176506+08:00",
-          "description": "sample string 2",
-          "createTime": "2019-11-28T15:38:35.6176506+08:00"
-        },
-        {
-          "id": 1,
-          "interviewId": 1,
-          "date": "2019-11-28T15:38:35.6176506+08:00",
-          "description": "sample string 2",
-          "createTime": "2019-11-28T15:38:35.6176506+08:00"
-        }
+        // {
+        //   "id": 1,
+        //   "interviewId": 1,
+        //   "date": "2019-11-28T15:38:35.6176506+08:00",
+        //   "description": "sample string 2",
+        //   "createTime": "2019-11-28T15:38:35.6176506+08:00"
+        // },
+        // {
+        //   "id": 1,
+        //   "interviewId": 1,
+        //   "date": "2019-11-28T15:38:35.6176506+08:00",
+        //   "description": "sample string 2",
+        //   "createTime": "2019-11-28T15:38:35.6176506+08:00"
+        // }
       ],
-      "State": 1,
-      "Message": "sample string 2"
+      "uid": "sample string 1",
+      "userId": 2,
+      "requestTime": "2020-02-10T11:23:28.8430819+08:00",
+      "secret": "sample string 4"
     },
     steps: [
-      {
-        text: '步骤一',
-        desc: '描述信息阿萨德撒大多撒多按时大大爱上大发电房'
-      },
-      {
-        text: '步骤二',
-        desc: '描述信息'
-      },
-      {
-        text: '步骤三',
-        desc: '描述信息'
-      },
-      {
-        text: '步骤四',
-        desc: '描述信息'
-      }
     ],
     active: 4,
     show: false,
+    popshow:false,
+    canchangejobinfo:false,
     date: '',
-    description: ''
+    description: '',
+    collectJobs:[
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    var detail = that.data.detail
+    detail.interview.uid = app.globalData.userInfo.uid
+    detail.uid = app.globalData.userInfo.uid
+    detail.userId = app.globalData.userInfo.id
+    this.setData({
+      detail:detail
+    })
 
+    //请求收藏信息
+    var requstData = {
+      "page": 1,
+      "count": 100,
+      "uid": app.globalData.userInfo.uid,
+      "userId": app.globalData.userInfo.id,
+      "requestTime": util.formatTime(new Date()),
+      "secret": app.createSecret()
+    }
+
+    wx.request({
+      url: Apis.Urls.MyCollect,
+      data: requstData,
+      method: 'post',
+      dataType: "application/json",
+      success: function (result) {
+        result = JSON.parse(result.data)
+        console.log(result)
+        for (var index in result.jobs) {
+          result.jobs[index].createTime = util.formatstrToShortStr(result.jobs[index].createTime) + '发布'
+          var indexString = 'collectJobs[' + that.data.collectJobs.length + ']'
+          that.setData({
+            [indexString]: result.jobs[index]
+          })
+        }
+
+        // if (result.jobs.length < 10) {
+        //   that.data.isbottom = 1
+        // } else {
+        //   that.data.page = that.data.page + 1
+        // }
+      }
+    })
   },
 
   /**
@@ -116,9 +147,21 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
   },
-
+  changeCompanyName(e){
+    var detail = this.data.detail
+    detail.interview.companyName = e.detail
+    this.setData({
+      detail: detail
+    })
+  },
+  changeJobName(){
+    var detail = this.data.detail
+    detail.interview.jobName = e.detail
+    this.setData({
+      detail: detail
+    })
+  },
   changeState(e) {
     var detail = this.data.detail
     detail.interview.state = e.currentTarget.dataset.state
@@ -182,4 +225,83 @@ Page({
       date: e.detail.value
     })
   },
+  save:function(e){
+    var data = this.data
+    if (data.detail.interview.companyName == ''){
+      wx.showToast({
+        title: '公司名称不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    if (data.detail.interview.jobName == '') {
+      wx.showToast({
+        title: '职位名称不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    if (data.detail.interviewSteps.length == 0){
+      wx.showToast({
+        title: '至少添加一个进度',
+        icon:'none'
+      })
+      return
+    }
+    //提交新的面试进度
+    var postData = this.data.detail
+    postData.requestTime = util.formatTime(new Date())
+    postData.secret = app.createSecret()
+    console.log(postData)
+    wx.request({
+      url: Apis.Urls.CreateInterview,
+      data: postData,
+      method: 'post',
+      dataType: "application/json",
+      success: function (result) {
+        result = JSON.parse(result.data)
+        console.log(result)
+        if(result.State == 1){
+          wx.showToast({
+            title: '保存成功',
+          })
+          //返回主页
+          wx.navigateBack({
+            
+          })
+
+        }else{
+          wx.showToast({
+            title: '服务器异常，请稍后再试',
+            mask:'fail'
+          })
+        }
+      }
+    })
+  },
+  showPopup(){
+    this.setData({
+      popshow: true
+    })
+  },
+  closePopup(){
+    this.setData({
+      popshow:false
+    })
+  },
+  choosecollect(e){
+    var tempdata = this.data
+    // console.log(e.currentTarget.dataset.item)
+    tempdata.canchangejobinfo = true
+    tempdata.detail.interview.jobId = e.currentTarget.dataset.item.id
+    tempdata.detail.interview.companyId = e.currentTarget.dataset.item.companyId
+    tempdata.detail.interview.jobName = e.currentTarget.dataset.item.jobName
+    tempdata.detail.interview.companyName = e.currentTarget.dataset.item.companyName
+    this.setData({
+      canchangejobinfo: tempdata.canchangejobinfo,
+      detail: tempdata.detail,
+      popshow: false
+    })
+    console.log(this.data)
+  }
 })

@@ -265,7 +265,12 @@ Page({
     }
 
   },
-
+  addProgress:function(){
+    console.log('das')
+    wx: wx.navigateTo({
+      url: '/pages/workprogress/create/index',
+    })
+  },
 
 
 
